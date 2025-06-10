@@ -250,3 +250,391 @@
 2025-06-08 09:07:31,957 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-06-08 09:07:31,982 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2025-06-08 09:07:31,988 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:07:20,541 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-06-09 20:08:40,312 [main] ERROR o.e.m2e.editor.pom.MavenPomEditor - Cannot determine URI for '/demo/pom.xml'.
+org.eclipse.ui.PartInitException: Cannot determine URI for '/demo/pom.xml'.
+	at org.eclipse.ui.texteditor.AbstractTextEditor.internalInit(AbstractTextEditor.java:3203)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.init(AbstractTextEditor.java:3214)
+	at org.eclipse.ui.part.MultiPageEditorPart.addPage(MultiPageEditorPart.java:250)
+	at org.eclipse.ui.forms.editor.FormEditor.addPage(FormEditor.java:331)
+	at org.eclipse.ui.part.MultiPageEditorPart.addPage(MultiPageEditorPart.java:229)
+	at org.eclipse.ui.forms.editor.FormEditor.addPage(FormEditor.java:313)
+	at org.eclipse.m2e.editor.pom.MavenPomEditor.addFallbackEditors(MavenPomEditor.java:361)
+	at org.eclipse.m2e.editor.pom.MavenPomEditor.addPages(MavenPomEditor.java:337)
+	at org.eclipse.ui.forms.editor.FormEditor.createPages(FormEditor.java:143)
+	at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart.java:381)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.createPartControl(CompatibilityPart.java:158)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor.createPartControl(CompatibilityEditor.java:96)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.create(CompatibilityPart.java:365)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:977)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:939)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalInject(InjectorImpl.java:139)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalMake(InjectorImpl.java:386)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.make(InjectorImpl.java:312)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.make(ContextInjectionFactory.java:203)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.createFromBundle(ReflectionContributionFactory.java:90)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.doCreate(ReflectionContributionFactory.java:59)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:42)
+	at org.eclipse.ui.internal.WorkbenchContributionFactory.create(WorkbenchContributionFactory.java:46)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer.createWidget(ContributedPartRenderer.java:134)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:991)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:658)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:762)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:727)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:711)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.lambda$0(PartServiceImpl.java:105)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.lambda$0(UIEventHandler.java:38)
+	at org.eclipse.swt.widgets.Synchronizer.syncExec(Synchronizer.java:183)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4853)
+	at org.eclipse.e4.ui.workbench.swt.DisplayUISynchronize.syncExec(DisplayUISynchronize.java:34)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.handleEvent(UIEventHandler.java:38)
+	at org.eclipse.equinox.internal.event.EventHandlerWrapper.handleEvent(EventHandlerWrapper.java:206)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:201)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:151)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.dispatchEvent(EventAdminImpl.java:131)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.sendEvent(EventAdminImpl.java:73)
+	at org.eclipse.equinox.internal.event.EventComponent.sendEvent(EventComponent.java:44)
+	at org.eclipse.e4.ui.services.internal.events.EventBroker.send(EventBroker.java:55)
+	at org.eclipse.e4.ui.internal.workbench.UIEventPublisher.notifyChanged(UIEventPublisher.java:60)
+	at org.eclipse.emf.common.notify.impl.BasicNotifierImpl.eNotify(BasicNotifierImpl.java:424)
+	at org.eclipse.e4.ui.model.application.ui.impl.ElementContainerImpl.setSelectedElementGen(ElementContainerImpl.java:168)
+	at org.eclipse.e4.ui.model.application.ui.impl.ElementContainerImpl.setSelectedElement(ElementContainerImpl.java:187)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.hidePart(PartServiceImpl.java:1391)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.hidePart(PartServiceImpl.java:1341)
+	at org.eclipse.e4.ui.workbench.renderers.swt.StackRenderer.closePart(StackRenderer.java:1362)
+	at org.eclipse.e4.ui.workbench.renderers.swt.StackRenderer$3.close(StackRenderer.java:1227)
+	at org.eclipse.swt.custom.CTabFolder.onMouse(CTabFolder.java:1982)
+	at org.eclipse.swt.custom.CTabFolder.lambda$0(CTabFolder.java:337)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:91)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4321)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1208)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4119)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3707)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:668)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:576)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:178)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:149)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:115)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:467)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:298)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:670)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:607)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1492)
+Caused by: org.eclipse.core.runtime.CoreException: Cannot determine URI for '/demo/pom.xml'.
+	at org.eclipse.core.internal.filebuffers.ResourceFileBuffer.create(ResourceFileBuffer.java:239)
+	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:116)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.createFileInfo(TextFileDocumentProvider.java:565)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.connect(TextFileDocumentProvider.java:481)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.doSetInput(AbstractTextEditor.java:4188)
+	at org.eclipse.ui.texteditor.StatusTextEditor.doSetInput(StatusTextEditor.java:262)
+	at org.eclipse.ui.texteditor.AbstractDecoratedTextEditor.doSetInput(AbstractDecoratedTextEditor.java:1526)
+	at org.eclipse.ui.editors.text.TextEditor.doSetInput(TextEditor.java:153)
+	at org.eclipse.ui.internal.genericeditor.ExtensionBasedTextEditor.doSetInput(ExtensionBasedTextEditor.java:92)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.lambda$1(AbstractTextEditor.java:3172)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:434)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:354)
+	at org.eclipse.ui.internal.WorkbenchWindow.lambda$7(WorkbenchWindow.java:2335)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:67)
+	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:2332)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.internalInit(AbstractTextEditor.java:3189)
+	... 82 common frames omitted
+2025-06-09 20:09:06,003 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:09:06,035 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:09:06,061 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:10:36,905 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:10:36,933 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:10:36,940 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:10:48,149 [Worker-0: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2025-06-09 20:10:51,435 [Worker-0: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.crypto:crypto-trading-platform:0.0.1-SNAPSHOT @ D:\CDAC-Project\backend-crypto\crypto-trading-platform\pom.xml.
+2025-06-09 20:10:52,840 [Worker-0: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /crypto-trading-platform/src/main/java
+2025-06-09 20:10:52,843 [Worker-0: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /crypto-trading-platform/src/main/resources
+2025-06-09 20:10:52,844 [Worker-0: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /crypto-trading-platform/src/main/resources
+2025-06-09 20:10:52,845 [Worker-0: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /crypto-trading-platform/src/test/java
+2025-06-09 20:10:52,847 [Worker-0: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /crypto-trading-platform/src/test/resources
+2025-06-09 20:10:53,682 [Worker-0: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed for 1 poms: local refresh takes 0.00 sec, refresh facades takes 4.00 sec, update config takes 0.00 sec 
+2025-06-09 20:10:54,344 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:10:54,378 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:10:54,386 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:11:06,480 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013 [361])
+2025-06-09 20:11:06,483 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013
+2025-06-09 20:11:06,484 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\aopalliance-1.0.jar
+2025-06-09 20:11:06,484 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\guice-5.1.0.jar
+2025-06-09 20:11:06,484 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpclient-4.5.14.jar
+2025-06-09 20:11:06,484 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpcore-4.4.16.jar
+2025-06-09 20:11:06,484 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jansi-2.4.1.jar
+2025-06-09 20:11:06,485 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jcl-over-slf4j-1.7.36.jar
+2025-06-09 20:11:06,485 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-artifact-3.9.9.jar
+2025-06-09 20:11:06,485 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-builder-support-3.9.9.jar
+2025-06-09 20:11:06,485 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-compat-3.9.9.jar
+2025-06-09 20:11:06,485 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-core-3.9.9.jar
+2025-06-09 20:11:06,485 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-embedder-3.9.9.jar
+2025-06-09 20:11:06,485 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-3.9.9.jar
+2025-06-09 20:11:06,485 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-builder-3.9.9.jar
+2025-06-09 20:11:06,485 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-plugin-api-3.9.9.jar
+2025-06-09 20:11:06,485 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-repository-metadata-3.9.9.jar
+2025-06-09 20:11:06,485 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-api-1.9.22.jar
+2025-06-09 20:11:06,486 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-connector-basic-1.9.22.jar
+2025-06-09 20:11:06,486 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-impl-1.9.22.jar
+2025-06-09 20:11:06,486 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-named-locks-1.9.22.jar
+2025-06-09 20:11:06,486 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-provider-3.9.9.jar
+2025-06-09 20:11:06,486 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-spi-1.9.22.jar
+2025-06-09 20:11:06,486 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-file-1.9.22.jar
+2025-06-09 20:11:06,486 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-http-1.9.22.jar
+2025-06-09 20:11:06,486 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-wagon-1.9.22.jar
+2025-06-09 20:11:06,486 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-util-1.9.22.jar
+2025-06-09 20:11:06,486 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-3.9.9.jar
+2025-06-09 20:11:06,486 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-builder-3.9.9.jar
+2025-06-09 20:11:06,487 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-shared-utils-3.4.2.jar
+2025-06-09 20:11:06,487 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.inject-0.9.0.M3.jar
+2025-06-09 20:11:06,487 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.plexus-0.9.0.M3.jar
+2025-06-09 20:11:06,487 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-0.0.7.jar
+2025-06-09 20:11:06,487 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-1.2.0.jar
+2025-06-09 20:11:06,487 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-cipher-2.0.jar
+2025-06-09 20:11:06,487 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-classworlds-2.8.0.jar
+2025-06-09 20:11:06,487 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-component-annotations-2.1.0.jar
+2025-06-09 20:11:06,487 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-interpolation-1.27.jar
+2025-06-09 20:11:06,488 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-sec-dispatcher-2.0.jar
+2025-06-09 20:11:06,488 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-utils-3.5.1.jar
+2025-06-09 20:11:06,488 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-xml-3.0.1.jar
+2025-06-09 20:11:06,488 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-file-3.5.3.jar
+2025-06-09 20:11:06,488 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-3.5.3.jar
+2025-06-09 20:11:06,488 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-shared-3.5.3.jar
+2025-06-09 20:11:06,488 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-provider-api-3.5.3.jar
+2025-06-09 20:11:06,492 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava_33.4.0.jre [29])
+2025-06-09 20:11:06,493 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\com.google.guava_33.4.0.jre.jar
+2025-06-09 20:11:06,494 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=slf4j.api_2.0.17 [608])
+2025-06-09 20:11:06,494 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\slf4j.api_2.0.17.jar
+2025-06-09 20:11:06,495 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=javax.inject_1.0.0.v20220405-0441 [759])
+2025-06-09 20:11:06,495 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\javax.inject_1.0.0.v20220405-0441.jar
+2025-06-09 20:11:06,496 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=javax.annotation_1.3.5.v20230504-0748 [758])
+2025-06-09 20:11:06,496 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\javax.annotation_1.3.5.v20230504-0748.jar
+2025-06-09 20:11:06,497 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.cli_1.9.0 [77])
+2025-06-09 20:11:06,498 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.apache.commons.cli_1.9.0.jar
+2025-06-09 20:11:06,498 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.commons-codec_1.16.0 [79])
+2025-06-09 20:11:06,499 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.apache.commons.commons-codec_1.16.0.jar
+2025-06-09 20:11:06,499 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava.failureaccess_1.0.2 [30])
+2025-06-09 20:11:06,500 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\com.google.guava.failureaccess_1.0.2.jar
+2025-06-09 20:11:06,508 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "D:\CDAC-Project\backend-crypto\crypto-trading-platform":
+2025-06-09 20:11:06,515 [Worker-9: Launching Executing clean in D__CDAC-Project_backend-crypto_crypto-trading-platform] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -Ppom.xml -B -Dstyle.color=always clean
+2025-06-09 20:11:10,382 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:11:10,384 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:11:10,389 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:11:20,802 [main] INFO  o.e.m2e.actions.ExecutePomAction - Creating new launch configuration
+2025-06-09 20:11:30,768 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013 [361])
+2025-06-09 20:11:30,769 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013
+2025-06-09 20:11:30,770 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\aopalliance-1.0.jar
+2025-06-09 20:11:30,770 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\guice-5.1.0.jar
+2025-06-09 20:11:30,770 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpclient-4.5.14.jar
+2025-06-09 20:11:30,770 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpcore-4.4.16.jar
+2025-06-09 20:11:30,770 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jansi-2.4.1.jar
+2025-06-09 20:11:30,771 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jcl-over-slf4j-1.7.36.jar
+2025-06-09 20:11:30,771 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-artifact-3.9.9.jar
+2025-06-09 20:11:30,771 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-builder-support-3.9.9.jar
+2025-06-09 20:11:30,771 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-compat-3.9.9.jar
+2025-06-09 20:11:30,771 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-core-3.9.9.jar
+2025-06-09 20:11:30,772 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-embedder-3.9.9.jar
+2025-06-09 20:11:30,772 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-3.9.9.jar
+2025-06-09 20:11:30,772 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-builder-3.9.9.jar
+2025-06-09 20:11:30,772 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-plugin-api-3.9.9.jar
+2025-06-09 20:11:30,772 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-repository-metadata-3.9.9.jar
+2025-06-09 20:11:30,772 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-api-1.9.22.jar
+2025-06-09 20:11:30,773 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-connector-basic-1.9.22.jar
+2025-06-09 20:11:30,773 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-impl-1.9.22.jar
+2025-06-09 20:11:30,773 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-named-locks-1.9.22.jar
+2025-06-09 20:11:30,773 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-provider-3.9.9.jar
+2025-06-09 20:11:30,773 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-spi-1.9.22.jar
+2025-06-09 20:11:30,773 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-file-1.9.22.jar
+2025-06-09 20:11:30,773 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-http-1.9.22.jar
+2025-06-09 20:11:30,774 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-wagon-1.9.22.jar
+2025-06-09 20:11:30,774 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-util-1.9.22.jar
+2025-06-09 20:11:30,774 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-3.9.9.jar
+2025-06-09 20:11:30,774 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-builder-3.9.9.jar
+2025-06-09 20:11:30,774 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-shared-utils-3.4.2.jar
+2025-06-09 20:11:30,774 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.inject-0.9.0.M3.jar
+2025-06-09 20:11:30,774 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.plexus-0.9.0.M3.jar
+2025-06-09 20:11:30,775 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-0.0.7.jar
+2025-06-09 20:11:30,775 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-1.2.0.jar
+2025-06-09 20:11:30,775 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-cipher-2.0.jar
+2025-06-09 20:11:30,775 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-classworlds-2.8.0.jar
+2025-06-09 20:11:30,775 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-component-annotations-2.1.0.jar
+2025-06-09 20:11:30,775 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-interpolation-1.27.jar
+2025-06-09 20:11:30,776 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-sec-dispatcher-2.0.jar
+2025-06-09 20:11:30,776 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-utils-3.5.1.jar
+2025-06-09 20:11:30,776 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-xml-3.0.1.jar
+2025-06-09 20:11:30,776 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-file-3.5.3.jar
+2025-06-09 20:11:30,777 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-3.5.3.jar
+2025-06-09 20:11:30,777 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-shared-3.5.3.jar
+2025-06-09 20:11:30,777 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-provider-api-3.5.3.jar
+2025-06-09 20:11:30,777 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava_33.4.0.jre [29])
+2025-06-09 20:11:30,778 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\com.google.guava_33.4.0.jre.jar
+2025-06-09 20:11:30,778 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=slf4j.api_2.0.17 [608])
+2025-06-09 20:11:30,779 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\slf4j.api_2.0.17.jar
+2025-06-09 20:11:30,780 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=javax.inject_1.0.0.v20220405-0441 [759])
+2025-06-09 20:11:30,780 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\javax.inject_1.0.0.v20220405-0441.jar
+2025-06-09 20:11:30,780 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=javax.annotation_1.3.5.v20230504-0748 [758])
+2025-06-09 20:11:30,781 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\javax.annotation_1.3.5.v20230504-0748.jar
+2025-06-09 20:11:30,781 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.cli_1.9.0 [77])
+2025-06-09 20:11:30,781 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.apache.commons.cli_1.9.0.jar
+2025-06-09 20:11:30,781 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.commons-codec_1.16.0 [79])
+2025-06-09 20:11:30,782 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.apache.commons.commons-codec_1.16.0.jar
+2025-06-09 20:11:30,782 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava.failureaccess_1.0.2 [30])
+2025-06-09 20:11:30,782 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\com.google.guava.failureaccess_1.0.2.jar
+2025-06-09 20:11:30,785 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "D:\CDAC-Project\backend-crypto\crypto-trading-platform":
+2025-06-09 20:11:30,785 [Worker-12: Launching crypto-trading-platform (2)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -Ppom.xml -B -Dmaven.test.skip=true -DskipTests -Dstyle.color=always clean 
+2025-06-09 20:13:37,207 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:13:37,213 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:13:37,218 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:23:04,001 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:23:04,057 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:23:04,066 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:25:20,057 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:25:20,072 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:25:20,078 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:25:24,272 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:25:24,286 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:25:24,298 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:31:42,709 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:31:42,735 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:31:42,742 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:33:48,575 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:33:48,596 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:33:48,605 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:34:20,707 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:34:20,727 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:34:20,733 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:34:59,244 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:34:59,272 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:34:59,278 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:35:24,409 [Worker-24: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:35:24,429 [Worker-24: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:35:24,436 [Worker-24: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:40:03,685 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:40:03,717 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:40:03,725 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:40:36,967 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:40:36,979 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:40:36,985 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:42:30,626 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:42:30,639 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:42:30,644 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 20:47:51,432 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 20:47:51,449 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 20:47:51,454 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 21:09:32,905 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 21:09:32,939 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 21:09:32,949 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 21:12:15,304 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 21:12:15,334 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 21:12:15,342 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 21:12:29,812 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 21:12:29,826 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 21:12:29,832 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 21:12:40,473 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 21:12:40,501 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 21:12:40,515 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 21:20:00,129 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 21:20:00,155 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 21:20:00,163 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 21:32:57,832 [Worker-48: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 21:32:57,852 [Worker-48: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 21:32:57,859 [Worker-48: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 21:34:16,217 [Worker-48: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 21:34:16,239 [Worker-48: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 21:34:16,247 [Worker-48: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 21:40:09,609 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 21:40:09,627 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 21:40:09,634 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 21:40:43,429 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 21:40:43,447 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 21:40:43,455 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 21:42:25,507 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 21:42:25,532 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 21:42:25,540 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 21:43:07,732 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 21:43:07,741 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 21:43:07,747 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 21:43:23,561 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 21:43:23,655 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 21:43:23,671 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-09 21:54:28,847 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-06-09 21:54:28,897 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-06-09 21:54:28,907 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\CDAC-Project\backend-crypto\crypto-trading-platform\src\test\resources
+2025-06-10 20:29:18,638 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-06-10 20:32:10,034 [main] INFO  o.e.m2e.actions.ExecutePomAction - Creating new launch configuration
+2025-06-10 20:32:23,105 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013 [361])
+2025-06-10 20:32:23,109 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013
+2025-06-10 20:32:23,110 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\aopalliance-1.0.jar
+2025-06-10 20:32:23,110 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\guice-5.1.0.jar
+2025-06-10 20:32:23,111 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpclient-4.5.14.jar
+2025-06-10 20:32:23,111 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpcore-4.4.16.jar
+2025-06-10 20:32:23,111 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jansi-2.4.1.jar
+2025-06-10 20:32:23,111 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jcl-over-slf4j-1.7.36.jar
+2025-06-10 20:32:23,111 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-artifact-3.9.9.jar
+2025-06-10 20:32:23,112 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-builder-support-3.9.9.jar
+2025-06-10 20:32:23,112 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-compat-3.9.9.jar
+2025-06-10 20:32:23,112 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-core-3.9.9.jar
+2025-06-10 20:32:23,112 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-embedder-3.9.9.jar
+2025-06-10 20:32:23,112 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-3.9.9.jar
+2025-06-10 20:32:23,112 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-builder-3.9.9.jar
+2025-06-10 20:32:23,112 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-plugin-api-3.9.9.jar
+2025-06-10 20:32:23,113 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-repository-metadata-3.9.9.jar
+2025-06-10 20:32:23,113 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-api-1.9.22.jar
+2025-06-10 20:32:23,114 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-connector-basic-1.9.22.jar
+2025-06-10 20:32:23,114 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-impl-1.9.22.jar
+2025-06-10 20:32:23,114 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-named-locks-1.9.22.jar
+2025-06-10 20:32:23,114 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-provider-3.9.9.jar
+2025-06-10 20:32:23,114 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-spi-1.9.22.jar
+2025-06-10 20:32:23,115 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-file-1.9.22.jar
+2025-06-10 20:32:23,115 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-http-1.9.22.jar
+2025-06-10 20:32:23,115 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-wagon-1.9.22.jar
+2025-06-10 20:32:23,115 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-util-1.9.22.jar
+2025-06-10 20:32:23,116 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-3.9.9.jar
+2025-06-10 20:32:23,116 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-builder-3.9.9.jar
+2025-06-10 20:32:23,116 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-shared-utils-3.4.2.jar
+2025-06-10 20:32:23,116 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.inject-0.9.0.M3.jar
+2025-06-10 20:32:23,117 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.plexus-0.9.0.M3.jar
+2025-06-10 20:32:23,117 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-0.0.7.jar
+2025-06-10 20:32:23,117 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-1.2.0.jar
+2025-06-10 20:32:23,117 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-cipher-2.0.jar
+2025-06-10 20:32:23,118 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-classworlds-2.8.0.jar
+2025-06-10 20:32:23,118 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-component-annotations-2.1.0.jar
+2025-06-10 20:32:23,118 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-interpolation-1.27.jar
+2025-06-10 20:32:23,118 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-sec-dispatcher-2.0.jar
+2025-06-10 20:32:23,118 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-utils-3.5.1.jar
+2025-06-10 20:32:23,118 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-xml-3.0.1.jar
+2025-06-10 20:32:23,119 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-file-3.5.3.jar
+2025-06-10 20:32:23,119 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-3.5.3.jar
+2025-06-10 20:32:23,119 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-shared-3.5.3.jar
+2025-06-10 20:32:23,119 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-provider-api-3.5.3.jar
+2025-06-10 20:32:23,123 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava_33.4.0.jre [29])
+2025-06-10 20:32:23,124 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\com.google.guava_33.4.0.jre.jar
+2025-06-10 20:32:23,124 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=slf4j.api_2.0.17 [608])
+2025-06-10 20:32:23,125 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\slf4j.api_2.0.17.jar
+2025-06-10 20:32:23,126 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=javax.inject_1.0.0.v20220405-0441 [759])
+2025-06-10 20:32:23,127 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\javax.inject_1.0.0.v20220405-0441.jar
+2025-06-10 20:32:23,127 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=javax.annotation_1.3.5.v20230504-0748 [758])
+2025-06-10 20:32:23,128 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\javax.annotation_1.3.5.v20230504-0748.jar
+2025-06-10 20:32:23,129 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.cli_1.9.0 [77])
+2025-06-10 20:32:23,130 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.apache.commons.cli_1.9.0.jar
+2025-06-10 20:32:23,130 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.commons-codec_1.16.0 [79])
+2025-06-10 20:32:23,131 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\org.apache.commons.commons-codec_1.16.0.jar
+2025-06-10 20:32:23,131 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava.failureaccess_1.0.2 [30])
+2025-06-10 20:32:23,132 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: D:\sts-4.30.0.RELEASE\sts-4.30.0.RELEASE\plugins\com.google.guava.failureaccess_1.0.2.jar
+2025-06-10 20:32:23,138 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "D:\CDAC-Project\backend-crypto\crypto-trading-platform":
+2025-06-10 20:32:23,140 [Worker-0: Launching crypto-trading-platform (3)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -Ppom.xml -B -Dmaven.test.skip=true -DskipTests -Dstyle.color=always clean package

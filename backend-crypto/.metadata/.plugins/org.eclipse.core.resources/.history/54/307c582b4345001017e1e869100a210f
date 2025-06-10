@@ -1,0 +1,5 @@
+package com.crypto.domain;
+
+public enum USER_ROLE {
+
+}
