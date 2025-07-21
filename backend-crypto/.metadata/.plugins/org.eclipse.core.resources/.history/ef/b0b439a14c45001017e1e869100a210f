@@ -1,5 +1,0 @@
-package com.crypto.exception;
-
-public class UserException {
-
-}

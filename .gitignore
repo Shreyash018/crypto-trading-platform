@@ -1,0 +1,16 @@
+# Eclipse
+.metadata/
+*.class
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Gradle
+/build/
+.gradle/
+
+# IDEA
+.idea/
+*.iml
