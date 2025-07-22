@@ -1,8 +1,5 @@
 package com.crypto.model;
 
-import java.sql.Date;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Entity;
@@ -20,42 +17,40 @@ import lombok.NoArgsConstructor;
 public class Coin {
 
 	@Id
-    @JsonProperty("id")
-    private String id;
+	@JsonProperty("id")
+	private String id;
 
-    @JsonProperty("symbol")
-    private String symbol;
+	@JsonProperty("symbol")
+	private String symbol;
 
-    @JsonProperty("name")
-    private String name;
+	@JsonProperty("name")
+	private String name;
 
-    @JsonProperty("image")
-    private String image;
+	@JsonProperty("image")
+	private String image;
 
-    @JsonProperty("current_price")
-    private double currentPrice;
+	@JsonProperty("current_price")
+	private double currentPrice;
 
-    @JsonProperty("market_cap")
-    private long marketCap;
+	@JsonProperty("market_cap")
+	private long marketCap;
 
-    @JsonProperty("market_cap_rank")
-    private int marketCapRank;
+	@JsonProperty("market_cap_rank")
+	private int marketCapRank;
 
+	@JsonProperty("high_24h")
+	private double high24h;
 
-    @JsonProperty("high_24h")
-    private double high24h;
+	@JsonProperty("low_24h")
+	private double low24h;
 
-    @JsonProperty("low_24h")
-    private double low24h;
+	@JsonProperty("price_change_percentage_24h")
+	private double priceChangePercentage24h;
 
+	@JsonProperty("ath")
+	private double ath;
 
-    @JsonProperty("price_change_percentage_24h")
-    private double priceChangePercentage24h;
-
-    @JsonProperty("ath")
-    private double ath;
-
-    @JsonProperty("atl")
-    private double atl;
+	@JsonProperty("atl")
+	private double atl;
 
 }
