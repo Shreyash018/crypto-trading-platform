@@ -17,6 +17,7 @@ import com.crypto.repository.UserRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -27,7 +28,7 @@ public class AuthController {
 	private final UserRepository userRepository;
 
 	@PostMapping("/signup")
-	public ResponseEntity<User> register(@RequestBody() User user) throws UserException {
+	public ResponseEntity<User> register(@RequestBody() @Valid User user) throws UserException {
 
 		User isEmailExist = userRepository.findByEmail(user.getEmail());
 
@@ -46,7 +47,7 @@ public class AuthController {
 	}
 
 	@PostMapping("/signin")
-	public ResponseEntity<?> login(@RequestBody LoginReqDto loginRequest) {
+	public ResponseEntity<?> login(@RequestBody @Valid LoginReqDto loginRequest) {
 		User user = userRepository.findByEmail(loginRequest.getEmail());
 
 		if (user == null) {
