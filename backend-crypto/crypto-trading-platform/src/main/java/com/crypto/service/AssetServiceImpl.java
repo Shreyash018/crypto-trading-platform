@@ -19,35 +19,84 @@ import lombok.AllArgsConstructor;
 public class AssetServiceImpl implements AssetService {
 
 	private final AssetRepository assetRepository;
-	private final UserRepository userRepository;
-	private final CoinRepository coinRepository;
 
 	@Override
-	public void addCoin(Long userId, String coinSymbol, double quantity, double pricePerUnit) throws UserException {
+	public void addCoin(Long userId, Coin coin, double quantity) throws UserException {
 
 		Asset asset = assetRepository.findByUserId(userId).orElseThrow(() -> new UserException("Asset not found"));
-		
-		Optional<Coin> existing = asset.getCoins().stream().filter(c -> c.getSymbol().equalsIgnoreCase(coinSymbol)).findFirst();
-		
-		
+
+		Optional<Coin> existing = asset.getCoins().stream().filter(c -> c.getSymbol().equalsIgnoreCase(coin.getSymbol()))
+				.findFirst();
+
+		if (existing.isPresent()) {
+
+			Coin acoin = existing.get();
+			double totalQuantity = asset.getQuantity() + quantity;
+			double totalCost = (asset.getQuantity() * asset.getBuyPrice()) + (quantity * coin.getCurrentPrice());
+			asset.setQuantity(totalQuantity);
+			asset.setBuyPrice(totalCost / totalQuantity);
+
+		} else {
+
+			Coin newCoin = new Coin();
+
+			newCoin.setSymbol(coin.getSymbol());
+			newCoin.setName(coin.getSymbol().toUpperCase());
+			newCoin.setCurrentPrice(coin.getCurrentPrice());
+			newCoin.setAsset(asset);
+
+			asset.getCoins().add(newCoin);
+			asset.setQuantity(quantity);
+			asset.setBuyPrice(coin.getCurrentPrice());
+		}
+
+		assetRepository.save(asset);
 	}
 
 	@Override
 	public void updateCoin(Long userId, String coinSymbol, double quantity, double pricePerUnit) {
-		// TODO Auto-generated method stub
+		Asset asset = assetRepository.findByUserId(userId)
+				.orElseThrow(() -> new UserException("Asset not found for user"));
 
+		Optional<Coin> coinOpt = asset.getCoins().stream().filter(c -> c.getSymbol().equalsIgnoreCase(coinSymbol))
+				.findFirst();
+
+		if (coinOpt.isPresent()) {
+			Coin coin = coinOpt.get();
+			coin.setCurrentPrice(pricePerUnit);
+			asset.setQuantity(quantity);
+			asset.setBuyPrice(pricePerUnit);
+			assetRepository.save(asset); // Persist changes
+
+		} else {
+
+			throw new UserException("Coin not found for this user");
+		}
 	}
 
 	@Override
 	public void deleteCoin(Long userId, String coinSymbol) {
-		// TODO Auto-generated method stub
+		Asset asset = assetRepository.findByUserId(userId)
+				.orElseThrow(() -> new UserException("Asset not found for user"));
 
+		boolean removed = asset.getCoins().removeIf(c -> c.getSymbol().equalsIgnoreCase(coinSymbol));
+
+		if (removed) {
+			assetRepository.save(asset); // Persist updated asset
+		} else {
+			throw new UserException("Coin not found for this user");
+		}
 	}
 
 	@Override
 	public List<Coin> getAllCoinsForUser(Long userId) {
-		// TODO Auto-generated method stub
-		return null;
+		Asset asset = assetRepository.findByUserId(userId).orElseThrow(() -> new UserException("Invalid User Id"));
+		return asset.getCoins();
 	}
+	
+	@Override
+    public Asset findAssetByUserIdAndCoinId(Long userId, String coinId) throws Exception {
+        return assetRepository.findByUserIdAndCoinId(userId,coinId);
+    }
 
 }

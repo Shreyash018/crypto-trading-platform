@@ -4,6 +4,7 @@ import com.crypto.domain.USER_ROLE;
 import com.crypto.domain.UserStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -12,6 +13,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -48,5 +50,8 @@ public class User {
 
 	@Enumerated(EnumType.STRING)
 	private USER_ROLE role= USER_ROLE.ROLE_USER;
+	
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Asset asset;
 
 }
