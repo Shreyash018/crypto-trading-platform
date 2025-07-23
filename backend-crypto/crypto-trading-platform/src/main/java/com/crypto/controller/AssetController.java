@@ -1,14 +1,13 @@
 package com.crypto.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crypto.model.Asset;
-import com.crypto.model.User;
+import com.crypto.model.Coin;
 import com.crypto.service.AssetService;
 
 import lombok.AllArgsConstructor;
@@ -31,4 +30,12 @@ public class AssetController {
 //	        return ResponseEntity.ok().body(asset);
 //	    }
 //	
+	
+	@PostMapping("/users/{userId}/asset/add")
+	public ResponseEntity<String> addCoinToUserAsset(@PathVariable Long userId,
+	      @RequestBody Coin coinRequest) {
+	    assetService.addCoin(userId, coinRequest , coinRequest.getQuantity());
+	    return ResponseEntity.ok("Coin added to asset.");
+	}
+
 }

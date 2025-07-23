@@ -8,7 +8,5 @@ import com.crypto.model.Asset;
 
 public interface AssetRepository extends JpaRepository<Asset, Long> {
 
-	 Optional<Asset> findByUserId(Long userId);
-
-	Asset findByUserIdAndCoinId(Long userId, String coinId);
+	Optional<Asset> findByUserId(Long userId);
 }

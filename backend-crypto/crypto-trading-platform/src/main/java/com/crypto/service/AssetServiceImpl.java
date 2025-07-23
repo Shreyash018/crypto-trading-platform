@@ -1,5 +1,6 @@
 package com.crypto.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,9 +9,8 @@ import org.springframework.stereotype.Service;
 import com.crypto.exception.UserException;
 import com.crypto.model.Asset;
 import com.crypto.model.Coin;
+import com.crypto.model.User;
 import com.crypto.repository.AssetRepository;
-import com.crypto.repository.CoinRepository;
-import com.crypto.repository.UserRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -21,7 +21,16 @@ public class AssetServiceImpl implements AssetService {
 	private final AssetRepository assetRepository;
 
 	@Override
-	public void addCoin(Long userId, Coin coin, double quantity) throws UserException {
+	public Asset createAssetForUser(User user) {
+	    Asset asset = new Asset();
+	    asset.setUser(user);
+	    asset.setCoins(new ArrayList<>());
+	    return assetRepository.save(asset);
+	}
+
+	
+	@Override
+	public void addCoin(Long userId, Coin coin, int quantity) throws UserException {
 
 		Asset asset = assetRepository.findByUserId(userId).orElseThrow(() -> new UserException("Asset not found"));
 
@@ -40,36 +49,45 @@ public class AssetServiceImpl implements AssetService {
 
 			Coin newCoin = new Coin();
 
+//			newCoin.setSymbol(coin.getSymbol());
+//			newCoin.setName(coin.getSymbol().toUpperCase());
+//			newCoin.setCurrentPrice(coin.getCurrentPrice());
+//			newCoin.setAsset(asset);
+//
+//			asset.getCoins().add(newCoin);
+//			asset.setQuantity(quantity);
+//			asset.setBuyPrice(coin.getCurrentPrice());
+			
 			newCoin.setSymbol(coin.getSymbol());
-			newCoin.setName(coin.getSymbol().toUpperCase());
-			newCoin.setCurrentPrice(coin.getCurrentPrice());
-			newCoin.setAsset(asset);
+	        newCoin.setName(coin.getSymbol().toUpperCase());
+	        newCoin.setQuantity(quantity);
+	        
+	        newCoin.setCurrentPrice(coin.getCurrentPrice());
+	        newCoin.setAsset(asset);
 
-			asset.getCoins().add(newCoin);
-			asset.setQuantity(quantity);
-			asset.setBuyPrice(coin.getCurrentPrice());
+	        asset.setBuyPrice(coin.getCurrentPrice() * quantity);
+	        asset.getCoins().add(newCoin);
 		}
 
 		assetRepository.save(asset);
 	}
 
 	@Override
-	public void updateCoin(Long userId, String coinSymbol, double quantity, double pricePerUnit) {
+	public void updateCoin(Long userId, Coin coin, int quantity) {
 		Asset asset = assetRepository.findByUserId(userId)
 				.orElseThrow(() -> new UserException("Asset not found for user"));
 
-		Optional<Coin> coinOpt = asset.getCoins().stream().filter(c -> c.getSymbol().equalsIgnoreCase(coinSymbol))
+		Optional<Coin> coinOpt = asset.getCoins().stream().filter(c -> c.getSymbol().equalsIgnoreCase(coin.getSymbol()))
 				.findFirst();
 
 		if (coinOpt.isPresent()) {
-			Coin coin = coinOpt.get();
-			coin.setCurrentPrice(pricePerUnit);
+			Coin coins = coinOpt.get();
+			coins.setCurrentPrice(coin.getCurrentPrice());
 			asset.setQuantity(quantity);
-			asset.setBuyPrice(pricePerUnit);
+			asset.setBuyPrice(coin.getCurrentPrice()*quantity);
 			assetRepository.save(asset); // Persist changes
 
-		} else {
-
+		} else { 
 			throw new UserException("Coin not found for this user");
 		}
 	}
@@ -95,8 +113,8 @@ public class AssetServiceImpl implements AssetService {
 	}
 	
 	@Override
-    public Asset findAssetByUserIdAndCoinId(Long userId, String coinId) throws Exception {
-        return assetRepository.findByUserIdAndCoinId(userId,coinId);
+    public Asset findAssetByUserId(Long userId) throws Exception {
+        return assetRepository.findByUserId(userId).orElseThrow(() -> new UserException("Asset not found for user"));
     }
 
 }

@@ -4,17 +4,21 @@ import java.util.List;
 
 import com.crypto.model.Asset;
 import com.crypto.model.Coin;
+import com.crypto.model.User;
 
 public interface AssetService {
 
-	    void addCoin(Long userId, Coin coin, double quantity);
+	
+	Asset createAssetForUser(User user);
+	
+	    void addCoin(Long userId, Coin coin, int quantity);
 	    
-	    void updateCoin(Long userId, String coinSymbol, double quantity, double pricePerUnit);
+	    void updateCoin(Long userId, Coin coin, int quantity);
 	    
 	    void deleteCoin(Long userId, String coinSymbol);
 	    
 	    List<Coin> getAllCoinsForUser(Long userId);
 
-		Asset findAssetByUserIdAndCoinId(Long userId, String coinId) throws Exception;
+		Asset findAssetByUserId(Long userId) throws Exception;
 	
 }

@@ -55,6 +55,9 @@ public class Coin {
 	@JsonProperty("atl")
 	private double atl;
 	
+	@JsonProperty("quantity")
+	private int quantity;
+	
 	@ManyToOne
 	@JoinColumn(name = "asset_id")
 	private Asset asset;
