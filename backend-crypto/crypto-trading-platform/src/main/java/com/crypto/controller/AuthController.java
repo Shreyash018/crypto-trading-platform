@@ -1,34 +1,44 @@
 package com.crypto.controller;
 
-import java.io.IOException;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.crypto.config.JwtProvider;
+import com.crypto.dto.AuthResponse;
 import com.crypto.dto.LoginReqDto;
 import com.crypto.exception.UserException;
 import com.crypto.model.User;
 import com.crypto.repository.UserRepository;
+import com.crypto.service.CustomeUserServiceImplementation;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("/auth")
 @AllArgsConstructor
+@Validated
 public class AuthController {
 
 	private final UserRepository userRepository;
+	
+	private final PasswordEncoder passwordEncoder;
+	
+	private final CustomeUserServiceImplementation customeUserServiceImplementation;
 
 	@PostMapping("/signup")
-	public ResponseEntity<User> register(@RequestBody() @Valid User user) throws UserException {
+	public ResponseEntity<AuthResponse> register(@RequestBody() @Valid User user) throws UserException {
 
 		User isEmailExist = userRepository.findByEmail(user.getEmail());
 
@@ -40,31 +50,71 @@ public class AuthController {
 		createdUser.setEmail(user.getEmail());
 		createdUser.setFullName(user.getFullName());
 		createdUser.setMobile(user.getMobile());
-		createdUser.setPassword(user.getPassword());
+		createdUser.setPassword(passwordEncoder.encode(user.getPassword()));
 
 		User savedUser = userRepository.save(createdUser);
-		return new ResponseEntity<User>(savedUser, HttpStatus.OK);
+
+		Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
+		// Creates a Spring Security Authentication object.
+
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
+		String jwt = JwtProvider.generateToken(authentication);
+		
+		AuthResponse authResponse = new AuthResponse();
+		authResponse.setJwt(jwt);
+		authResponse.setStatus(true);
+		authResponse.setMessage("Register Success");
+
+		return new ResponseEntity<AuthResponse>(authResponse, HttpStatus.OK);
 	}
 
 	@PostMapping("/signin")
-	public ResponseEntity<?> login(@RequestBody @Valid LoginReqDto loginRequest) {
-		User user = userRepository.findByEmail(loginRequest.getEmail());
+	public ResponseEntity<AuthResponse> login(@RequestBody @Valid LoginReqDto loginRequest) {
+		
+		String username = loginRequest.getEmail();
+		String password = loginRequest.getPassword();
 
-		if (user == null) {
-			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
-		}
+		System.out.println(username + " ----- " + password);
 
-		if (!user.getPassword().equals(loginRequest.getPassword())) {
-			return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);
-		}
+		Authentication authentication = authenticate(username, password);
+		
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+		
+		String jwt = JwtProvider.generateToken(authentication);
+		
+		AuthResponse authResponse = new AuthResponse();
+		authResponse.setJwt(jwt);
+		authResponse.setStatus(true);
+		authResponse.setMessage("Login Success");
 
-		return new ResponseEntity<>(user, HttpStatus.OK);
+		return new ResponseEntity<AuthResponse>(authResponse, HttpStatus.OK);
 	}
+	
+	
+	private Authentication authenticate(String username, String password) {
+		
+		UserDetails userDetails = customeUserServiceImplementation.loadUserByUsername(username);
 
-	@GetMapping("/login/google")
-	public void redirectToGoogle(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// Redirect to the Google OAuth2 authorization URI
-		response.sendRedirect("/login/oauth2/authorization/google");
+		System.out.println("sign in userDetails - " + userDetails);
+
+		if (userDetails == null) {
+			System.out.println("sign in userDetails - null " + userDetails);
+			throw new BadCredentialsException("Invalid username or password");
+		}
+		if (!passwordEncoder.matches(password, userDetails.getPassword())) {
+			System.out.println("sign in userDetails - password not match " + userDetails);
+			throw new BadCredentialsException("Invalid username or password");
+		}
+		return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 	}
+	
+	
+
+//	@GetMapping("/login/google")
+//	public void redirectToGoogle(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//		// Redirect to the Google OAuth2 authorization URI
+//		response.sendRedirect("/login/oauth2/authorization/google");
+//	}
 
 }

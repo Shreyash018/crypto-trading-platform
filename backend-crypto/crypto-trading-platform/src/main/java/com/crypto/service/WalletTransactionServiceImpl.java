@@ -3,11 +3,13 @@ package com.crypto.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.crypto.model.Wallet;
 import com.crypto.model.WalletTransaction;
 import com.crypto.repository.WalletTransactionsRepository;
 
+@Service
 public class WalletTransactionServiceImpl implements WalletTransactionService {
 	@Autowired
 	private WalletTransactionsRepository walletTransactionsRepository;

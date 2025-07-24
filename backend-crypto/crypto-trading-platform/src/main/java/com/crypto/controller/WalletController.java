@@ -23,17 +23,20 @@ import com.crypto.repository.UserRepository;
 import com.crypto.service.WalletService;
 import com.crypto.service.WalletTransactionService;
 
+import lombok.AllArgsConstructor;
+
 @RestController
 @RequestMapping("/wallet")
+@AllArgsConstructor
 public class WalletController {
-	@Autowired
-	private WalletService walletService;
-	@Autowired
-	private UserRepository userRepository;
-	@Autowired
-	private WalletTransactionService walletTransactionService;
-	@Autowired
-	private OrderRepository orderRepository;
+	
+	private final WalletService walletService;
+	
+	private final UserRepository userRepository;
+	
+	private final WalletTransactionService walletTransactionService;
+	
+	private final OrderRepository orderRepository;
 
 	@PostMapping("/create/{userId}")
 	public ResponseEntity<Wallet> createWallet(@PathVariable Long userId) {
