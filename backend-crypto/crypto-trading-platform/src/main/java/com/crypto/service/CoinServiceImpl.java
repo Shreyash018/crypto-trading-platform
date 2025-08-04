@@ -3,7 +3,6 @@ package com.crypto.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -19,14 +18,20 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.AllArgsConstructor;
+
 @Service
+
 public class CoinServiceImpl implements CoinService {
 
-	@Autowired
-	private CoinRepository coinRepository;
+	private final CoinRepository coinRepository;
 
-	@Autowired
-	private ObjectMapper objectMapper; // serialize and de-serialize from json to java
+	private final ObjectMapper objectMapper; // serialize and de-serialize from json to java
+
+	public CoinServiceImpl(CoinRepository coinRepository, ObjectMapper objectMapper) {
+		this.coinRepository = coinRepository;
+		this.objectMapper = objectMapper;
+	}
 
 	@Value("${coingecko.api.key}") // this is the annotation used to inject a value from the application.properties
 	private String API_KEY;

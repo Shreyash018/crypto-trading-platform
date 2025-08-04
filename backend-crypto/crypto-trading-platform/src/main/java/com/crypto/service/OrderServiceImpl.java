@@ -107,7 +107,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 
 		coin.setQuantity(coin.getQuantity() - quantity);
-		
+
 		Order order = createOrder(user, coin, quantity, OrderType.SELL);
 
 		walletService.payOrderPayment(order, user);
