@@ -14,4 +14,5 @@ public class AuthResponse {
 	private boolean status;
 	private boolean twoFactorAuthEnabled;
 	private String session;
+	
 }
