@@ -13,8 +13,9 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-    @Bean
-    ObjectMapper objectMapper() {
+	@Bean
+	ObjectMapper objectMapper() {
 		return new ObjectMapper();
 	}
+
 }

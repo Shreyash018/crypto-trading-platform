@@ -11,6 +11,10 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 
 import com.crypto.dto.ApiResponse;
+import com.crypto.exception.CoinNotFoundException;
+import com.crypto.exception.InsufficientAssetException;
+import com.crypto.exception.InsufficientFundException;
+import com.crypto.exception.OrderException;
 import com.crypto.exception.UserException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -44,6 +48,34 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(UserException.class)
 	public ResponseEntity<ApiResponse> handleUserException(UserException ex) {
 		return new ResponseEntity<>(
+				new ApiResponse(LocalDateTime.now(), ex.getMessage(), HttpStatus.BAD_REQUEST.value()),
+				HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(OrderException.class)
+	public ResponseEntity<ApiResponse> handleOrderException(OrderException ex) {
+		return new ResponseEntity<ApiResponse>(
+				new ApiResponse(LocalDateTime.now(), ex.getMessage(), HttpStatus.BAD_REQUEST.value()),
+				HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(CoinNotFoundException.class)
+	public ResponseEntity<ApiResponse> handleCoinNotFoundException(CoinNotFoundException ex) {
+		return new ResponseEntity<ApiResponse>(
+				new ApiResponse(LocalDateTime.now(), ex.getMessage(), HttpStatus.NOT_FOUND.value()),
+				HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(InsufficientFundException.class)
+	public ResponseEntity<ApiResponse> handleInsufficientFundException(InsufficientFundException ex) {
+		return new ResponseEntity<ApiResponse>(
+				new ApiResponse(LocalDateTime.now(), ex.getMessage(), HttpStatus.BAD_REQUEST.value()),
+				HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(InsufficientAssetException.class)
+	public ResponseEntity<ApiResponse> handleInsufficientAssetException(InsufficientAssetException ex) {
+		return new ResponseEntity<ApiResponse>(
 				new ApiResponse(LocalDateTime.now(), ex.getMessage(), HttpStatus.BAD_REQUEST.value()),
 				HttpStatus.BAD_REQUEST);
 	}

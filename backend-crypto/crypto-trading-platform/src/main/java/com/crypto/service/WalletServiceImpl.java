@@ -1,9 +1,8 @@
 package com.crypto.service;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.crypto.domain.OrderType;
@@ -16,12 +15,13 @@ import com.crypto.model.WalletTransaction;
 import com.crypto.repository.WalletRepository;
 import com.crypto.repository.WalletTransactionsRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class WalletServiceImpl implements WalletService {
-	@Autowired
-	private WalletRepository walletRepository;
-	@Autowired
-	private WalletTransactionsRepository walletTransactionsRepository;
+	private final WalletRepository walletRepository;
+	private final WalletTransactionsRepository walletTransactionsRepository;
 
 	@Override
 	public Wallet createWallet(User user) {
@@ -48,11 +48,11 @@ public class WalletServiceImpl implements WalletService {
 		WalletTransaction walletTransaction = new WalletTransaction();
 		walletTransaction.setWallet(wallet);
 		walletTransaction.setPurpose(order.getOrderType() + " " + order.getCoin().getId());
-		walletTransaction.setDate(LocalDate.now());
+		walletTransaction.setDateTime(LocalDateTime.now());
 		walletTransaction.setTransferId(order.getCoin().getSymbol());
 		if (order.getOrderType().equals(OrderType.BUY)) {
 			walletTransaction.setType(WalletTransactionType.BUY_ASSET);
-			walletTransaction.setAmount(-order.getPrice().longValue());
+			walletTransaction.setAmount(order.getPrice().negate());
 			BigDecimal newBalance = wallet.getBalance().subtract(order.getPrice());
 			if (newBalance.compareTo(BigDecimal.ZERO) < 0) {
 				throw new WalletException("Insufficient funds for this transaction");
@@ -60,7 +60,7 @@ public class WalletServiceImpl implements WalletService {
 			wallet.setBalance(newBalance);
 		} else if (order.getOrderType().equals(OrderType.SELL)) {
 			walletTransaction.setType(WalletTransactionType.SELL_ASSET);
-			walletTransaction.setAmount(order.getPrice().longValue());
+			walletTransaction.setAmount(order.getPrice());
 			BigDecimal newBalance = wallet.getBalance().add(order.getPrice());
 			wallet.setBalance(newBalance);
 		}
