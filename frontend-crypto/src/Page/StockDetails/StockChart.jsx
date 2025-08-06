@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import ReactApexChart from 'react-apexcharts';
 import {
   AppBar,
@@ -50,6 +51,9 @@ const timeSeries = [
 ];
 
 const StockChart = () => {
+
+  const [activeType, setActiveType] = useState(timeSeries[0]);
+ 
 
     const series = [
     {
@@ -147,16 +151,21 @@ const StockChart = () => {
     },
   });
 
+    
+  const handleActiveLable = (item) => {
+    setActiveLable(item);
+  };
 
   return (
     <div>
       <div id="charts">
         <div className="toolbars space-x-2">
-          {timeSeries.map((item) => (
-            <Button key={item.lable}>
+           {timeSeries.map((item) => (
+            <Button
+             onClick={() => handleActiveLable(item.lable)} key={item.lable}>
               {item.lable}
             </Button>
-          ))}
+             ))}
         </div>
       <div className='chart-timelines' style={{ height: '350px', width: '100%' }}>
         <ReactApexChart options={options} series={series}  type="area" height={550} />

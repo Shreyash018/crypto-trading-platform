@@ -9,29 +9,21 @@ import {
   Avatar,
   Paper,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
-const AssetTable = ({ coins, category }) => {
- 
-   const navigate = useNavigate();
-
+const Portfolio = () => {
   return (
-    <TableContainer
-      component={Paper}
-      style={{
-        maxHeight: category === "all" ? "74vh" : "82vh",
-        overflowY: "auto",
-      }}
-    >
+    <div>
+      <h1 className='font-bold text-gray-500 text-3xl text-left mt-4'>Portfolio</h1> 
+   <TableContainer>
       <Table stickyHeader>
         <TableHead>
           <TableRow>
             <TableCell><strong>Coin</strong></TableCell>
-            <TableCell>SYMBOL</TableCell>
-            <TableCell>VOLUME</TableCell>
-            <TableCell>MARKET CAP</TableCell>
-            <TableCell>24H</TableCell>
-            <TableCell align="right">PRICE</TableCell>
+            <TableCell>Price</TableCell>
+            <TableCell>Unit</TableCell>
+            <TableCell>Change</TableCell>
+            <TableCell>Change%</TableCell>
+            <TableCell align="right">Volume</TableCell>
           </TableRow>
         </TableHead>
 
@@ -41,26 +33,26 @@ const AssetTable = ({ coins, category }) => {
               key={item.id}
               hover
               style={{ cursor: "pointer" }}
-              onClick={() => navigate(`/market/bitcoin`)}
+              onClick={() => navigate(`/market/${item.id}`)}
             >
-              <TableCell onClick={() => navigate(`/market/bitcoin`)}>
+              <TableCell>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <Avatar src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5R6mgu0T0wZOdaIZOIfE76t2fUtjBGmr5jjMyDS5UlfJ7K1W9sge3dAx16n5Jvu22qwU&usqp=CAU"} alt="Etherem" />
+                  <Avatar src={item.image} alt={item.symbol} />
                   <span>{item.name}</span>
                 </div>
               </TableCell>
               <TableCell>Symbol</TableCell>
               <TableCell>volume</TableCell>
               <TableCell>marketcap</TableCell>
-              <TableCell >
-              </TableCell>
+              <TableCell ></TableCell>
               <TableCell align="right">855652</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
-  );
+    </div>
+  )
 }
 
-export default AssetTable
+export default Portfolio

@@ -17,6 +17,12 @@ import { useNavigate } from "react-router-dom";
 const Navbar = ({ auth }) => {
   const navigate = useNavigate();
 
+    const handleNavigate=()=>{
+    if(auth.user){
+      auth.user.role==="ROLE_ADMIN"?navigate("/admin/withdrawal"):navigate("/profile")
+    }
+  }
+
   return (
     <AppBar
       position="sticky"
@@ -27,7 +33,7 @@ const Navbar = ({ auth }) => {
       <Toolbar className="flex justify-between">
         {/* Left: Logo */}
         <Box className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/")}>
-          <Typography variant="h6" className="font-bold text-orange-600">
+          <Typography variant="h6" className="font-bold text-orange-900">
            Crypto 
           </Typography>
         </Box>
@@ -49,7 +55,7 @@ const Navbar = ({ auth }) => {
           <Button onClick={() => navigate("/Activity")} color="inherit">
             Activity
           </Button>
-          <Button onClick={() => navigate("/Logout")} color="inherit">
+          <Button onClick={() => navigate("/signin")} color="inherit">
             Logout
           </Button>
         </Box>
@@ -59,14 +65,10 @@ const Navbar = ({ auth }) => {
           <IconButton onClick={() => navigate("/search")} color="inherit">
             <SearchIcon />
           </IconButton>
-          <IconButton onClick={() => navigate("/profile")}>
-            {auth?.user ? (
-              <Avatar>{auth.user.fullName[0].toUpperCase()}</Avatar>
-            ) : (
-              <Avatar>
-                <PersonIcon />
-              </Avatar>
-            )}
+          <IconButton onClick={handleNavigate} color="inherit">
+         <Avatar>
+          {auth?.user?.fullName ? auth.user.fullName[0].toUpperCase() : <PersonIcon />}
+          </Avatar>
           </IconButton>
         </Box>
       </Toolbar>

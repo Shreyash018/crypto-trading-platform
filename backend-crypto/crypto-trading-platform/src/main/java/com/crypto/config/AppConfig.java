@@ -47,8 +47,8 @@ public class AppConfig {
 	                    "http://localhost:3000",
 	                    "http://localhost:5173",
 						"http://localhost:5174",
-	                    "http://localhost:4200",
-							"https://zosh-treading.vercel.app"
+	                    "http://localhost:4200"
+						
 	                ));
 	                cfg.setAllowedMethods(Collections.singletonList("*"));
 	                cfg.setAllowCredentials(true);
