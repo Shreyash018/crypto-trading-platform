@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -14,14 +14,22 @@ import Wallet from './Page/Wallet/Wallet.jsx'
 import Paymentdetails from './Page/PaymentDetails/Paymentdetails.jsx'
 import Withdrawal from './Page/Withdrawal/Withdrawal.jsx'
 import Auth from './Page/Auth/Auth.jsx'
+import { useDispatch, useSelector } from 'react-redux'
+import { getUser } from './Redux/Auth/Action.js'
 
 
 function App() {
 
+  const {auth} = useSelector((store) => store);
+  const dispatch = useDispatch();
+  console.log("auth", auth);
+
+  useEffect(() => {dispatch(getUser( auth.jwt || localStorage.getItem("jwt")))}, [auth.jwt]);
+
+
   return (
     <>
-    <Auth/>
-      {false && <div>
+      {auth.user? <div>
       <Navbar auth={{ user: { fullName: "Crypto" } }} />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -34,7 +42,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/search" element={<SearchCoin />} />
       </Routes>
-    </div>}
+    </div>:<Auth />}
     </>
   )
 }

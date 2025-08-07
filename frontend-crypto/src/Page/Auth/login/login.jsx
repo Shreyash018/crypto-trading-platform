@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "@/Redux/Auth/Action";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 
+
 // Zod validation
 const formSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -39,10 +40,10 @@ const LoginForm = () => {
     },
   });
 
-  const onSubmit = (data) => {
-    data.navigate = navigate;
-    dispatch(login(data));
-  };
+const onSubmit = (data) => {
+  dispatch(login({ ...data, navigate }));
+};
+
 
   return (
     <Box

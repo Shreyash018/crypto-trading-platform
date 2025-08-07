@@ -12,15 +12,28 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { logout } from "@/Redux/Auth/Action";
+import { useSelector } from 'react-redux';
 
 
-const Navbar = ({ auth }) => {
+
+const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const {auth} = useSelector((store) => store);
 
     const handleNavigate=()=>{
     if(auth.user){
       auth.user.role==="ROLE_ADMIN"?navigate("/admin/withdrawal"):navigate("/profile")
     }
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem("jwt"); 
+    dispatch(logout());
+    navigate("/signin");
   }
 
   return (
@@ -55,7 +68,7 @@ const Navbar = ({ auth }) => {
           <Button onClick={() => navigate("/Activity")} color="inherit">
             Activity
           </Button>
-          <Button onClick={() => navigate("/signin")} color="inherit">
+          <Button onClick={handleLogout} color="inherit">
             Logout
           </Button>
         </Box>

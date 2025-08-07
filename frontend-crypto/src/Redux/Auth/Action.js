@@ -23,16 +23,27 @@ export const register = (userData) => async (dispatch) => {
 export const login = (userData) => async (dispatch) => {
   dispatch({ type: actionTypes.LOGIN_REQUEST });
   try {
-    const response = await axios.post(`${API_BASE_URL}/auth/signin`, userData);
+    console.log("Login data being sent:", userData);
+
+    const payload = {
+      email: userData.email,
+      password: userData.password
+    };
+
+    const response = await axios.post(`${API_BASE_URL}/auth/signin`, {
+  email: userData.email,
+  password: userData.password
+});
+
     const user = response.data;
+
     if (user.twoFactorAuthEnabled) {
       userData.navigate(`/two-factor-auth/${user.session}`);
-    }
-    if (user.jwt) {
+    } else if (user.jwt) {
       localStorage.setItem("jwt", user.jwt);
-      console.log("login ", user);
       userData.navigate("/");
     }
+
     dispatch({ type: actionTypes.LOGIN_SUCCESS, payload: user.jwt });
   } catch (error) {
     console.log("catch error", error);
@@ -42,6 +53,31 @@ export const login = (userData) => async (dispatch) => {
     });
   }
 };
+
+
+// export const login = (userData) => async (dispatch) => {
+//   dispatch({ type: actionTypes.LOGIN_REQUEST });
+//   try {
+//     console.log("Login data being sent:", userData);
+//     const response = await axios.post(`${API_BASE_URL}/auth/signin`, userData.data);
+//     const user = response.data;
+//     if (user.twoFactorAuthEnabled) {
+//       userData.navigate(`/two-factor-auth/${user.session}`);
+//     }
+//     if (user.jwt) {
+//       localStorage.setItem("jwt", user.jwt);
+//       console.log("login ", user);
+//       userData.navigate("/");
+//     }
+//     dispatch({ type: actionTypes.LOGIN_SUCCESS, payload: user.jwt });
+//   } catch (error) {
+//     console.log("catch error", error);
+//     dispatch({
+//       type: actionTypes.LOGIN_FAILURE,
+//       payload: error.response?.data ? error.response.data : error,
+//     });
+//   }
+// };
 
 export const twoStepVerification =
   ({ otp, session, navigate }) =>
@@ -252,5 +288,6 @@ export const logout = () => {
   return async (dispatch) => {
     dispatch({ type: actionTypes.LOGOUT });
     localStorage.clear();
+    delete axios.defaults.headers.common["Authorization"];
   };
 };

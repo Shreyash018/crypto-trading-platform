@@ -54,6 +54,7 @@ public class CoinServiceImpl implements CoinService {
 		// status code (e.g., 200 OK) , headers , body (JSON string of coin list)
 
 		System.out.println(response.getBody());
+		
 		List<Coin> coins = objectMapper.readValue(response.getBody(), new TypeReference<List<Coin>>() {
 		});
 		// This line deserializes a JSON string into a Java object, specifically a

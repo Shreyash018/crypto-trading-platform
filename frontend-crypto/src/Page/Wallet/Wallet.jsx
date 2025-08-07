@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {
   Card,
   CardHeader,
@@ -23,15 +23,26 @@ import ShuffleIcon from '@mui/icons-material/Shuffle';
 import TopupForm from "./TopupForm";
 import TransferForm from "./TransferForm";
 import WithdrawForm from "./WithdrawForm";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserWallet, getWalletTransactions } from "../../Redux/Wallet/Action";
 
 const Wallet = () => {
+  const dispatch = useDispatch();
+  const { wallet } = useSelector((store) => store);
   const [openTopup, setOpenTopup] = useState(false);
   const [openWithdraw, setOpenWithdraw] = useState(false);
   const [openTransfer, setOpenTransfer] = useState(false);
 
+  useEffect(() => {
+    handleFetchUserWallet();
+  },[])
+
   const hanldeFetchWalletTransactions = () => {
     dispatch(getWalletTransactions({ jwt: localStorage.getItem("jwt") }));
   };
+
+  const handleFetchUserWallet = () => {
+    dispatch(getUserWallet({ jwt: localStorage.getItem("jwt") }))}
 
   return (
     <div className='flex flex-col items-center'>
@@ -58,7 +69,7 @@ const Wallet = () => {
               </Box>
             }
             action={
-              <IconButton>
+              <IconButton onClick={handleFetchUserWallet}>
                 <AutorenewIcon />
               </IconButton>
             }
@@ -69,7 +80,7 @@ const Wallet = () => {
             <Box display="flex" alignItems="center" gap={1}>
               <AttachMoneyIcon />
               <Typography variant="h6" fontWeight="bold">
-                555222323
+                {wallet.userWallet?.balance ? wallet.userWallet.balance.toFixed(2) : "0.00"} USD
               </Typography>
             </Box>
 

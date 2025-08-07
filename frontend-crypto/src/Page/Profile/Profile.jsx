@@ -19,7 +19,7 @@ import { enableTwoStepAuthentication, verifyOtp } from '@/Redux/Auth/Action';
 
 const Profile = () => {
   const { auth } = useSelector((store) => store);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
 
   const [openTwoStepDialog, setOpenTwoStepDialog] = useState(false);
   const [openVerifyDialog, setOpenVerifyDialog] = useState(false);
@@ -39,16 +39,16 @@ const Profile = () => {
       maxWidth="1100px"
       mx="auto"
       pt={6}
-      pb={10}
-      px={2}
+      pb={6}
+      px={3}
       sx={{ backgroundColor: '#f4f6f8', minHeight: '100vh' }}
     >
       {/* User Info */}
       <StyledCard title="Your Information">
-        <Grid container spacing={3}>
+        <Grid container spacing={45}>
           <Grid item xs={12} md={6}>
-            <InfoItem label="Email" value="ababab@gmail.com" />
-            <InfoItem label="Full Name" value="Crypto" />
+            <InfoItem label="Email" value={auth.user?.email} />
+            <InfoItem label="Full Name" value={auth.user?.fullName} />
             <InfoItem label="Date Of Birth" value="25/09/2000" />
             <InfoItem label="Nationality" value="Indian" />
           </Grid>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Table,
   TableBody,
@@ -10,10 +10,13 @@ import {
   Paper,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
-const AssetTable = ({ coins, category }) => {
- 
+
+const AssetTable = ({ coin , category }) => {
+   const dispatch = useDispatch();
    const navigate = useNavigate();
+
 
   return (
     <TableContainer
@@ -36,25 +39,25 @@ const AssetTable = ({ coins, category }) => {
         </TableHead>
 
         <TableBody>
-          {[1,1,1,1,1,1,1].map((item) => (
+          {coin.map((item) => (
             <TableRow
               key={item.id}
               hover
               style={{ cursor: "pointer" }}
-              onClick={() => navigate(`/market/bitcoin`)}
+              onClick={() => navigate(`/market/${item.id}`)}
             >
-              <TableCell onClick={() => navigate(`/market/bitcoin`)}>
+              <TableCell onClick={() => navigate(`/market/${item.id}`)} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <Avatar src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5R6mgu0T0wZOdaIZOIfE76t2fUtjBGmr5jjMyDS5UlfJ7K1W9sge3dAx16n5Jvu22qwU&usqp=CAU"} alt="Etherem" />
+                  <Avatar src={item.image} alt="Etherem" />
                   <span>{item.name}</span>
                 </div>
               </TableCell>
-              <TableCell>Symbol</TableCell>
-              <TableCell>volume</TableCell>
-              <TableCell>marketcap</TableCell>
-              <TableCell >
+              <TableCell>{item.symbol}</TableCell>
+              <TableCell>{item.total_volume}</TableCell>
+              <TableCell>{item.market_cap}</TableCell>
+              <TableCell >{item.price_change_percentage_24h.toFixed(2)}%
               </TableCell>
-              <TableCell align="right">855652</TableCell>
+              <TableCell align="right">${item.current_price}</TableCell>
             </TableRow>
           ))}
         </TableBody>
