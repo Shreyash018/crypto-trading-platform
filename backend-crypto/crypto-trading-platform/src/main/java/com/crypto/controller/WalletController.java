@@ -88,7 +88,6 @@ public class WalletController {
 				.orElseThrow(() -> new RuntimeException("Order not found with order ID " + orderId));
 		Wallet updatedWallet = walletService.payOrderPayment(order, user);
 		return ResponseEntity.ok(updatedWallet);
-
 	}
 
 	@PostMapping("{userId}/topup/create-order")
@@ -108,37 +107,6 @@ public class WalletController {
 		Wallet updatedWallet = paymentService.processPaymentSuccess(razorpay_order_id, razorpay_payment_id,
 				razorpay_signature, userId);
 		return ResponseEntity.ok(updatedWallet);
-	}
-
-	@PostMapping("{userId}/withdraw")
-	public ResponseEntity<WalletTransaction> simulateWithdraw(@PathVariable Long userId,
-			@RequestParam BigDecimal amount, @RequestParam String accountNumber, @RequestParam String ifscCode,
-			@RequestParam String accountHolderName, @RequestParam String bankName) throws Exception {
-		if (amount.compareTo(BigDecimal.ZERO) <= 0) {
-			throw new WalletException("Withdrawal amount must be greater than 0");
-		}
-		User user = userRepository.findById(userId)
-				.orElseThrow(() -> new UserException("User not found with ID " + userId));
-		Wallet wallet = walletService.getWalletByUser(user);
-		if (wallet.getBalance().compareTo(amount) < 0) {
-			throw new WalletException("Insufficient balance for withdrawal");
-		}
-		BigDecimal newBalance = wallet.getBalance().subtract(amount);
-		wallet.setBalance(newBalance);
-		walletService.updateBalance(wallet, newBalance);
-		WalletTransaction transaction = new WalletTransaction();
-		transaction.setWallet(wallet);
-		transaction.setType(WalletTransactionType.WITHDRAWAL);
-		transaction.setAmount(amount.negate());
-		transaction.setDateTime(LocalDateTime.now());
-		transaction.setTransferId("WITHDRAW_" + System.currentTimeMillis());
-		transaction.setPurpose("Wallet withdrawal simulation");
-		transaction.setAccountNumber(accountNumber);
-		transaction.setIfscCode(ifscCode);
-		transaction.setAccountHolderName(accountHolderName);
-		transaction.setBankName(bankName);
-		WalletTransaction savedTransaction = walletTransactionService.createTransaction(wallet, transaction);
-		return ResponseEntity.ok(savedTransaction);
 	}
 
 }

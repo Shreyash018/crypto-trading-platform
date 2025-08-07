@@ -66,9 +66,11 @@ public class JwtTokenValidator extends OncePerRequestFilter {
 		}
 
 		filterChain.doFilter(request, response);
-		
-		//"I'm done processing this request. Pass it on to the next filter (or controller)."
-		// If you don’t call doFilter(...), the request stops there — it will never reach the controller.
+
+		// "I'm done processing this request. Pass it on to the next filter (or
+		// controller)."
+		// If you don’t call doFilter(...), the request stops there — it will never
+		// reach the controller.
 		// This would cause your endpoints to hang or return a blank/403/404 response.
 	}
 }

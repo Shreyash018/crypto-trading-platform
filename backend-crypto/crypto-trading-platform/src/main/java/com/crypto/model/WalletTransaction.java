@@ -39,5 +39,6 @@ public class WalletTransaction {
 	private String accountHolderName;
 	private String ifscCode;
 	private String bankName;
+	private boolean isDcaTransaction = false;
 
 }
