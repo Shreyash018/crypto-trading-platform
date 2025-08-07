@@ -12,10 +12,29 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { logout } from "@/Redux/Auth/Action";
+import { useSelector } from 'react-redux';
 
 
-const Navbar = ({ auth }) => {
+
+const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const {auth} = useSelector((store) => store);
+
+    const handleNavigate=()=>{
+    if(auth.user){
+      auth.user.role==="ROLE_ADMIN"?navigate("/admin/withdrawal"):navigate("/profile")
+    }
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem("jwt"); 
+    dispatch(logout());
+    navigate("/signin");
+  }
 
   return (
     <AppBar
@@ -27,7 +46,7 @@ const Navbar = ({ auth }) => {
       <Toolbar className="flex justify-between">
         {/* Left: Logo */}
         <Box className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/")}>
-          <Typography variant="h6" className="font-bold text-orange-600">
+          <Typography variant="h6" className="font-bold text-orange-900">
            Crypto 
           </Typography>
         </Box>
@@ -49,7 +68,7 @@ const Navbar = ({ auth }) => {
           <Button onClick={() => navigate("/Activity")} color="inherit">
             Activity
           </Button>
-          <Button onClick={() => navigate("/Logout")} color="inherit">
+          <Button onClick={handleLogout} color="inherit">
             Logout
           </Button>
         </Box>
@@ -59,14 +78,10 @@ const Navbar = ({ auth }) => {
           <IconButton onClick={() => navigate("/search")} color="inherit">
             <SearchIcon />
           </IconButton>
-          <IconButton onClick={() => navigate("/profile")}>
-            {auth?.user ? (
-              <Avatar>{auth.user.fullName[0].toUpperCase()}</Avatar>
-            ) : (
-              <Avatar>
-                <PersonIcon />
-              </Avatar>
-            )}
+          <IconButton onClick={handleNavigate} color="inherit">
+         <Avatar>
+          {auth?.user?.fullName ? auth.user.fullName[0].toUpperCase() : <PersonIcon />}
+          </Avatar>
           </IconButton>
         </Box>
       </Toolbar>
