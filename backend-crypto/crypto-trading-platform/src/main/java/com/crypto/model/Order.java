@@ -59,5 +59,6 @@ public class Order {
 	    private double buyPrice;
 
 	    private double sellPrice;
+	    private boolean isDcaOrder=false;
 	    
 }

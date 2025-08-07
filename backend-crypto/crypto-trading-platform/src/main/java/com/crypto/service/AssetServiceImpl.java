@@ -22,20 +22,19 @@ public class AssetServiceImpl implements AssetService {
 
 	@Override
 	public Asset createAssetForUser(User user) {
-	    Asset asset = new Asset();
-	    asset.setUser(user);
-	    asset.setCoins(new ArrayList<>());
-	    return assetRepository.save(asset);
+		Asset asset = new Asset();
+		asset.setUser(user);
+		asset.setCoins(new ArrayList<>());
+		return assetRepository.save(asset);
 	}
 
-	
 	@Override
 	public void addCoin(Long userId, Coin coin, int quantity) throws UserException {
 
 		Asset asset = assetRepository.findByUserId(userId).orElseThrow(() -> new UserException("Asset not found"));
 
-		Optional<Coin> existing = asset.getCoins().stream().filter(c -> c.getSymbol().equalsIgnoreCase(coin.getSymbol()))
-				.findFirst();
+		Optional<Coin> existing = asset.getCoins().stream()
+				.filter(c -> c.getSymbol().equalsIgnoreCase(coin.getSymbol())).findFirst();
 
 		if (existing.isPresent()) {
 
@@ -57,16 +56,16 @@ public class AssetServiceImpl implements AssetService {
 //			asset.getCoins().add(newCoin);
 //			asset.setQuantity(quantity);
 //			asset.setBuyPrice(coin.getCurrentPrice());
-			
-			newCoin.setSymbol(coin.getSymbol());
-	        newCoin.setName(coin.getSymbol().toUpperCase());
-	        newCoin.setQuantity(quantity);
-	        
-	        newCoin.setCurrentPrice(coin.getCurrentPrice());
-	        newCoin.setAsset(asset);
 
-	        asset.setBuyPrice(coin.getCurrentPrice() * quantity);
-	        asset.getCoins().add(newCoin);
+			newCoin.setSymbol(coin.getSymbol());
+			newCoin.setName(coin.getSymbol().toUpperCase());
+			newCoin.setQuantity(quantity);
+
+			newCoin.setCurrentPrice(coin.getCurrentPrice());
+			newCoin.setAsset(asset);
+
+			asset.setBuyPrice(coin.getCurrentPrice() * quantity);
+			asset.getCoins().add(newCoin);
 		}
 
 		assetRepository.save(asset);
@@ -84,10 +83,10 @@ public class AssetServiceImpl implements AssetService {
 			Coin coins = coinOpt.get();
 			coins.setCurrentPrice(coin.getCurrentPrice());
 			asset.setQuantity(quantity);
-			asset.setBuyPrice(coin.getCurrentPrice()*quantity);
+			asset.setBuyPrice(coin.getCurrentPrice() * quantity);
 			assetRepository.save(asset); // Persist changes
 
-		} else { 
+		} else {
 			throw new UserException("Coin not found for this user");
 		}
 	}
@@ -111,10 +110,10 @@ public class AssetServiceImpl implements AssetService {
 		Asset asset = assetRepository.findByUserId(userId).orElseThrow(() -> new UserException("Invalid User Id"));
 		return asset.getCoins();
 	}
-	
+
 	@Override
-    public Asset findAssetByUserId(Long userId) throws Exception {
-        return assetRepository.findByUserId(userId).orElseThrow(() -> new UserException("Asset not found for user"));
-    }
+	public Asset findAssetByUserId(Long userId) throws Exception {
+		return assetRepository.findByUserId(userId).orElseThrow(() -> new UserException("Asset not found for user"));
+	}
 
 }

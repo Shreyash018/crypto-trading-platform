@@ -1,5 +1,9 @@
 package com.crypto.model;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+import com.crypto.domain.DcaFrequency;
 import com.crypto.domain.USER_ROLE;
 import com.crypto.domain.UserStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -20,7 +24,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,28 +34,46 @@ public class User {
 	private Long id;
 
 	private String fullName;
-	
+
 	@Column(unique = true, nullable = false)
 	private String email;
 	private String mobile;
 
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // not included in responses (JSON output).
 	private String password;
-	
+
 	@Enumerated(EnumType.STRING)
-	private UserStatus status= UserStatus.PENDING;
+	private UserStatus status = UserStatus.PENDING;
 
 	private boolean isVerified = false;
 
 	@Embedded
-	private TwoFactorAuth twoFactorAuth= new TwoFactorAuth();
-	
+	private TwoFactorAuth twoFactorAuth = new TwoFactorAuth();
+
 	private String picture;
 
 	@Enumerated(EnumType.STRING)
-	private USER_ROLE role= USER_ROLE.ROLE_USER;
-	
+	private USER_ROLE role = USER_ROLE.ROLE_USER;
+
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Asset asset;
+	private Asset asset;
+
+	private String resetToken;
+	private LocalDateTime resetTokenExpiry;
+	private boolean dcaEnabled = false;
+	private String dcaCoinId;
+	private BigDecimal dcaAmount;
+	@Enumerated(EnumType.STRING)
+	private DcaFrequency dcaFrequency;
+	private LocalDateTime nextDcaExecution;
+	private LocalDateTime lastDcaExecution;
+
+	public boolean isDcaDue() {
+		return dcaEnabled && nextDcaExecution != null && LocalDateTime.now().isAfter(nextDcaExecution);
+	}
+
+	public boolean isResetTokenExpired() {
+		return resetTokenExpiry == null || LocalDateTime.now().isAfter(resetTokenExpiry);
+	}
 
 }
