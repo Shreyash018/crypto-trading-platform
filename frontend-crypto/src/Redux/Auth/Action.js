@@ -120,7 +120,7 @@ export const getUser = (token) => {
       });
       const user = response.data;
       dispatch({ type: actionTypes.GET_USER_SUCCESS, payload: user });
-      console.log("req User ", user);
+   
     } catch (error) {
       const errorMessage = null;
       dispatch({ type: actionTypes.GET_USER_FAILURE, payload: errorMessage });

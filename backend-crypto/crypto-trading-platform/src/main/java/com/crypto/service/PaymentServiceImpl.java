@@ -1,96 +1,137 @@
 package com.crypto.service;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.crypto.domain.WalletTransactionType;
-import com.crypto.exception.UserException;
-import com.crypto.exception.WalletException;
+import com.crypto.domain.OrderStatus;
+import com.crypto.domain.PaymentMethod;
+import com.crypto.dto.PaymentResponse;
+import com.crypto.model.PaymentOrder;
 import com.crypto.model.User;
-import com.crypto.model.Wallet;
-import com.crypto.model.WalletTransaction;
-import com.crypto.repository.UserRepository;
-import com.crypto.repository.WalletRepository;
-import com.crypto.repository.WalletTransactionsRepository;
-import com.razorpay.Order;
+import com.crypto.repository.PaymentOrderRepository;
 import com.razorpay.Payment;
+import com.razorpay.PaymentLink;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
-import com.razorpay.Utils;
 
 @Service
-public class PaymentServiceImpl implements PaymentService {
+public  class PaymentServiceImpl implements PaymentService {
 
-	private final WalletRepository walletRepository;
-	private final UserRepository userRepository;
-	private final WalletTransactionsRepository walletTransactionsRepository;
-	private final RazorpayClient razorpayClient;
-	private final String secretKey;
+	    @Value("${razorpay.api.key}")
+	    private String apiKey;
 
-	public PaymentServiceImpl(UserRepository userRepository, WalletTransactionsRepository walletTransactionsRepository,
-			WalletRepository walletRepository, @Value("${razorpay.key.id}") String keyId,
-			@Value("${razorpay.key.secret}") String keySecret) throws RazorpayException {
-		this.walletRepository = walletRepository;
-		this.userRepository = userRepository;
-		this.walletTransactionsRepository = walletTransactionsRepository;
-		this.razorpayClient = new RazorpayClient(keyId, keySecret);
-		this.secretKey = keySecret;
-	}
+	    @Value("${razorpay.api.secret}")
+	    private String apiSecret;
 
-	@Override
-	public String createRazorpayOrder(Long userId, Long amount) throws Exception {
-		User user = userRepository.findById(userId)
-				.orElseThrow(() -> new UserException("User not found with ID " + userId));
-		if (amount <= 0) {
-			throw new WalletException("Amount must be greater than 0");
-		}
-		JSONObject orderRequest = new JSONObject();
-		orderRequest.put("amount", amount * 100); // Amount in paise(Multiply by 100 to convert it into rupees)
-		orderRequest.put("currency", "INR");
-		orderRequest.put("receipt", "wallet_topup_" + userId + "_" + System.currentTimeMillis());
-		Order order = razorpayClient.orders.create(orderRequest);
-		return order.get("id");
-	}
+	    @Autowired
+	    private PaymentOrderRepository paymentOrderRepository;
 
-	@Override
-	public Wallet processPaymentSuccess(String razorpayOrderId, String razorpayPaymentId, String razorpaySignature,
-			Long userId) throws Exception {
-		JSONObject options = new JSONObject();
-		options.put("razorpay_order_id", razorpayOrderId);
-		options.put("razorpay_payment_id", razorpayPaymentId);
-		options.put("razorpay_signature", razorpaySignature);
-		boolean isValid = Utils.verifyPaymentSignature(options, secretKey);
-		if (!isValid) {
-			throw new RazorpayException("Invalid payment signature");
-		}
-		User user = userRepository.findById(userId)
-				.orElseThrow(() -> new UserException("User not found with ID " + userId));
-		Wallet wallet = walletRepository.findByUser(user);
-		if (wallet == null) {
-			throw new WalletException("Wallet not found");
-		}
-		Payment payment = razorpayClient.payments.fetch(razorpayPaymentId);
-		Long amountPaise = payment.get("amount");
-		BigDecimal amount = BigDecimal.valueOf(amountPaise).divide(BigDecimal.valueOf(100));
-		wallet.setBalance(wallet.getBalance().add(amount));
-		walletRepository.save(wallet);
-		WalletTransaction transaction = new WalletTransaction();
-		transaction.setWallet(wallet);
-		transaction.setType(WalletTransactionType.ADD_MONEY);
-		transaction.setAmount(amount);
-		transaction.setDateTime(LocalDateTime.now());
-		transaction.setTransferId(razorpayPaymentId);
-		transaction.setPurpose("Top-up via RazorPay (Test)");
-		transaction.setAccountNumber("FAKE123456789");
-		transaction.setIfscCode("RZPY00000000");
-		transaction.setBankName("Razorpay Test Bank");
-		transaction.setAccountHolderName(user.getFullName());
-		walletTransactionsRepository.save(transaction);
-		return wallet;
-	}
+
+	    @Override
+	    public PaymentOrder createOrder(User user, Long amount, PaymentMethod paymentMethod) {
+	        PaymentOrder order=new PaymentOrder();
+	        order.setUser(user);
+	        order.setAmount(amount);
+	        order.setPaymentMethod(paymentMethod);
+	        return paymentOrderRepository.save(order);
+	    }
+
+	    @Override
+	    public PaymentOrder getPaymentOrderById(Long id) throws Exception {
+	        Optional<PaymentOrder> optionalPaymentOrder=paymentOrderRepository.findById(id);
+	        if(optionalPaymentOrder.isEmpty()){
+	            throw new Exception("payment order not found with id "+id);
+	        }
+	        return optionalPaymentOrder.get();
+	    }
+
+	    @Override
+	    public Boolean ProccedPaymentOrder(PaymentOrder paymentOrder, String paymentId) throws RazorpayException {
+	        if (!paymentOrder.getStatus().equals(OrderStatus.PENDING)) {
+	            return false; // Already processed
+	        }
+
+	        if (paymentOrder.getPaymentMethod().equals(PaymentMethod.RAZORPAY)) {
+	            RazorpayClient razorpay = new RazorpayClient(apiKey, apiSecret);
+	            Payment payment = razorpay.payments.fetch(paymentId);
+
+	            String status = payment.get("status");
+	            if ("captured".equals(status)) {
+	                paymentOrder.setStatus(OrderStatus.SUCCESS);
+	                paymentOrderRepository.save(paymentOrder);
+	                return true;
+	            } else {
+	                paymentOrder.setStatus(OrderStatus.FAILED);
+	                paymentOrderRepository.save(paymentOrder);
+	                return false;
+	            }
+	        } else {
+	            paymentOrder.setStatus(OrderStatus.SUCCESS);
+	            paymentOrderRepository.save(paymentOrder);
+	            return true;
+	        }
+	    }
+
+
+	    @Override
+	    public PaymentResponse createRazorpayPaymentLink(User user,
+	                                                     Long Amount,
+	                                                     Long orderId)
+	            throws RazorpayException {
+
+	        Long amount = Amount * 100;
+
+
+	        try {
+	            // Instantiate a Razorpay client with your key ID and secret
+	            RazorpayClient razorpay = new RazorpayClient(apiKey, apiSecret);
+
+	            JSONObject paymentLinkRequest = new JSONObject();
+	            paymentLinkRequest.put("amount",amount);
+	            paymentLinkRequest.put("currency","INR");
+
+
+	            // Create a JSON object with the customer details
+	            JSONObject customer = new JSONObject();
+	            customer.put("name",user.getFullName());
+
+	            customer.put("email",user.getEmail());
+	            paymentLinkRequest.put("customer",customer);
+
+	            // Create a JSON object with the notification settings
+	            JSONObject notify = new JSONObject();
+	            notify.put("email",true);
+	            paymentLinkRequest.put("notify",notify);
+
+	            // Set the reminder settings
+	            paymentLinkRequest.put("reminder_enable",true);
+
+	            // Set the callback URL and method
+	            paymentLinkRequest.put("callback_url","http://localhost:5173/wallet/"+orderId);
+	            paymentLinkRequest.put("callback_method","get");
+
+	            // Create the payment link using the paymentLink.create() method
+	            PaymentLink payment = razorpay.paymentLink.create(paymentLinkRequest);
+
+	            String paymentLinkId = payment.get("id");
+	            String paymentLinkUrl = payment.get("short_url");
+
+	            PaymentResponse res=new PaymentResponse();
+	            res.setPayment_url(paymentLinkUrl);
+
+
+	            return res;
+
+	        } catch (RazorpayException e) {
+
+	            System.out.println("Error creating payment link: " + e.getMessage());
+	            throw new RazorpayException(e.getMessage());
+	        }
+	    }
+
 
 }

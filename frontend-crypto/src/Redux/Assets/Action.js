@@ -17,6 +17,7 @@ export const getAssetById =
         type: types.GET_ASSET_SUCCESS,
         payload: response.data,
       });
+      
     } catch (error) {
       dispatch({
         type: types.GET_ASSET_FAILURE,
@@ -40,7 +41,7 @@ export const getAssetById =
         type: types.GET_ASSET_DETAILS_SUCCESS,
         payload: response.data,
       });
-      console.log("asset details --- ",response.data)
+     
     } catch (error) {
       dispatch({
         type: types.GET_ASSET_FAILURE,
@@ -62,6 +63,7 @@ export const getUserAssets = (jwt) => async (dispatch) => {
       type: types.GET_USER_ASSETS_SUCCESS,
       payload: response.data,
     });
+    
   } catch (error) {
     dispatch({
       type: types.GET_USER_ASSETS_FAILURE,

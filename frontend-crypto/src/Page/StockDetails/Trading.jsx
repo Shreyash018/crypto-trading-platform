@@ -20,6 +20,7 @@ const TradingForm = () => {
   const [quantity, setQuantity] = useState(0);
   const [amount, setAmount] = useState(0);
   const [orderType, setOrderType] = useState("BUY");
+  
 
   const handleAmountChange = (e) => {
     const newAmount = parseFloat(e.target.value);
@@ -146,7 +147,7 @@ const TradingForm = () => {
           {orderType === "BUY" ? (
             <span>
               {walletBalance}
-              <DollarSign size={15} style={{ verticalAlign: "middle" }} />
+              <DollarSign size={15} style={{ verticalAlign: "middle" }} /> 
             </span>
           ) : (
             userQuantity

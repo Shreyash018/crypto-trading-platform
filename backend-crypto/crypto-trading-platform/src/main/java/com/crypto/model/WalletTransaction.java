@@ -1,12 +1,12 @@
 package com.crypto.model;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+
+
+import java.time.LocalDate;
 
 import com.crypto.domain.WalletTransactionType;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,26 +19,20 @@ import lombok.Data;
 public class WalletTransaction {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@ManyToOne
-	private Wallet wallet;
+    @ManyToOne
+    private Wallet wallet;
 
-	@Enumerated
-	private WalletTransactionType type;
+    private WalletTransactionType type;
 
-	private LocalDateTime dateTime;
+    private LocalDate date;
 
-	private String transferId;
+    private String transferId;
 
-	private String purpose;
+    private String purpose;
 
-	private BigDecimal amount;
-	private String accountNumber;
-	private String accountHolderName;
-	private String ifscCode;
-	private String bankName;
-	private boolean isDcaTransaction = false;
+    private Long amount;
 
 }

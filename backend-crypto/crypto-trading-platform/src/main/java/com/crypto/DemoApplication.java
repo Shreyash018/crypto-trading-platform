@@ -17,12 +17,22 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
+
+	
 	@Bean
+<<<<<<< HEAD
 	ObjectMapper objectMapper() {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.registerModule(new JavaTimeModule());
 		mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 		return mapper;
+=======
+	public ObjectMapper objectMapper() {
+	    ObjectMapper mapper = new ObjectMapper();
+	    mapper.registerModule(new JavaTimeModule());
+	    mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+	    return mapper;
+>>>>>>> 388b44567669365aa8dcfa1c42124b169fb6797e
 	}
 
 }

@@ -1,6 +1,6 @@
 // withdrawalActions.js
 
-import api from '@/Api/api';
+import api from '@/Page/Api/api';
 import {
   WITHDRAWAL_REQUEST,
   WITHDRAWAL_SUCCESS,
@@ -63,7 +63,7 @@ export const proceedWithdrawal = ({id, jwt, accept}) => async dispatch => {
   }
 };
 
-export const getWithdrawalHistory = jwt => async dispatch => {
+export const getWithdrawalHistory = ({jwt}) => async dispatch => {
   dispatch({ type: GET_WITHDRAWAL_HISTORY_REQUEST });
   try {
     const response = await api.get('/api/withdrawal', {
@@ -111,7 +111,7 @@ export const addPaymentDetails = ({paymentDetails, jwt}) => async dispatch => {
       headers: { Authorization: `Bearer ${jwt}` }
     });
 
-    console.log("withdrawal ---- ",response.data)
+    console.log("add payment details  ---- ",response.data)
     dispatch({
       type: ADD_PAYMENT_DETAILS_SUCCESS,
       payload: response.data

@@ -9,9 +9,11 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useEffect } from 'react';
 
 // import your action
-import { addPaymentDetails } from '@/Redux/Wallet/Action';
+import { addPaymentDetails } from "@/Redux/Withdrawal/Action";
+
 
 const formSchema = yup.object().shape({
   accountHolderName: yup.string().required('Account holder name is required'),
@@ -27,6 +29,7 @@ const PaymentDetailsForm = () => {
   const dispatch = useDispatch();
   const { auth } = useSelector((store) => store);
 
+
   const {
     register,
     handleSubmit,
@@ -37,7 +40,6 @@ const PaymentDetailsForm = () => {
       accountHolderName: '',
       ifsc: '',
       accountNumber: '',
-      confirmAccountNumber: '',
       bankName: '',
     },
   });

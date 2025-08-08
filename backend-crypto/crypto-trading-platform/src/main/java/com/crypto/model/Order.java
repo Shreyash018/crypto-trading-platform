@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import com.crypto.domain.OrderStatus;
 import com.crypto.domain.OrderType;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -13,10 +14,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor 
 public class Order {
 
-	    @Id
+	  @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 
@@ -49,16 +49,8 @@ public class Order {
 	    @Column(nullable = false)
 	    private OrderStatus status = OrderStatus.PENDING;
 
-	    @ManyToOne
-	    @JoinColumn(name = "coin_id", nullable = false)
-	    private Coin coin;
 
-	    @Min(value = 1, message = "Quantity must be greater than or equal to 1")
-	    private double quantity;
-	    
-	    private double buyPrice;
+	    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+	    private OrderItem orderItem;
 
-	    private double sellPrice;
-	    private boolean isDcaOrder=false;
-	    
 }

@@ -4,18 +4,19 @@ import * as types from "./ActionTypes";
 // Action Creators
 export const getUserWallet = (jwt) => async (dispatch) => {
   dispatch({ type: types.GET_USER_WALLET_REQUEST });
-
+  console.log("jwt", jwt);
   try {
     const response = await api.get("/api/wallet", {
       headers: {
         Authorization: `Bearer ${jwt}`,
       },
     });
-
+   
     dispatch({
       type: types.GET_USER_WALLET_SUCCESS,
       payload: response.data,
     });
+   ;
   } catch (error) {
     console.log(error);
     dispatch({
@@ -26,7 +27,7 @@ export const getUserWallet = (jwt) => async (dispatch) => {
 };
 
 export const getWalletTransactions =
-  ({ jwt }) =>
+  ({jwt}) =>
   async (dispatch) => {
     dispatch({ type: types.GET_WALLET_TRANSACTION_REQUEST });
 
@@ -41,7 +42,7 @@ export const getWalletTransactions =
         type: types.GET_WALLET_TRANSACTION_SUCCESS,
         payload: response.data,
       });
-      console.log("wallet transaction", response.data);
+    
     } catch (error) {
       console.log(error);
       dispatch({
@@ -133,6 +134,8 @@ export const transferMoney =
         type: types.TRANSFER_MONEY_SUCCESS,
         payload: response.data,
       });
+
+      console.log("Transfer Successful:", response.data);
     } catch (error) {
       dispatch({
         type: types.TRANSFER_MONEY_FAILURE,
@@ -149,7 +152,7 @@ export const addPaymentDetails =
     dispatch({ type: types.ADD_PAYMENT_DETAILS_REQUEST });
 
     try {
-      const response = await api.put(`/api/wallet/payment-details`, paymentDetails, {
+      const response = await api.put(`/api/payment-details`, paymentDetails, {
         headers: {
           Authorization: `Bearer ${jwt}`,
         },

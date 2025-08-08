@@ -1,110 +1,154 @@
 package com.crypto.controller;
 
+<<<<<<< HEAD
 import java.math.BigDecimal;
+=======
+>>>>>>> 388b44567669365aa8dcfa1c42124b169fb6797e
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD
 import com.crypto.exception.UserException;
 import com.crypto.exception.WalletException;
+=======
+import com.crypto.domain.WalletTransactionType;
+import com.crypto.dto.PaymentResponse;
+>>>>>>> 388b44567669365aa8dcfa1c42124b169fb6797e
 import com.crypto.model.Order;
+import com.crypto.model.PaymentOrder;
 import com.crypto.model.User;
 import com.crypto.model.Wallet;
 import com.crypto.model.WalletTransaction;
-import com.crypto.repository.OrderRepository;
-import com.crypto.repository.UserRepository;
+import com.crypto.service.OrderService;
 import com.crypto.service.PaymentService;
+import com.crypto.service.UserService;
 import com.crypto.service.WalletService;
 import com.crypto.service.WalletTransactionService;
 
 import lombok.AllArgsConstructor;
 
 @RestController
-@AllArgsConstructor
-@RequestMapping("/wallet")
 public class WalletController {
 
-	private final WalletService walletService;
+	@Autowired
+    private WalletService walleteService;
 
-	private final UserRepository userRepository;
+    @Autowired
+    private UserService userService;
 
-	private final WalletTransactionService walletTransactionService;
+    @Autowired
+    private OrderService orderService;
 
-	private final OrderRepository orderRepository;
-	private final PaymentService paymentService;
+    @Autowired
+    private WalletTransactionService walletTransactionService;
 
-	@PostMapping("/create/{userId}")
-	public ResponseEntity<Wallet> createWallet(@PathVariable Long userId) {
-		User user = userRepository.findById(userId).orElseThrow();
-		Wallet wallet = walletService.createWallet(user);
-		return ResponseEntity.ok(wallet);
-	}
+    @Autowired
+    private PaymentService paymentService;
 
-	@GetMapping("/{userId}")
-	public ResponseEntity<Wallet> getWallet(@PathVariable Long userId) {
-		User user = userRepository.findById(userId).orElseThrow();
-		Wallet wallet = walletService.getWalletByUser(user);
-		return ResponseEntity.ok(wallet);
-	}
 
-	@PostMapping("/{userId}/transaction")
-	public ResponseEntity<WalletTransaction> createTransaction(@PathVariable Long userId,
-			@RequestBody WalletTransaction transaction) {
-		User user = userRepository.findById(userId).orElseThrow();
-		Wallet wallet = walletService.getWalletByUser(user);
-		BigDecimal amount = transaction.getAmount();
-		if (transaction.getType().name().equalsIgnoreCase("ADD_MONEY")) {
-			walletService.updateBalance(wallet, amount);
-		} else {
-			walletService.updateBalance(wallet, amount.negate());
-		}
-		WalletTransaction savedTransaction = walletTransactionService.createTransaction(wallet, transaction);
-		return ResponseEntity.ok(savedTransaction);
-	}
+    @GetMapping("/api/wallet")
+    public ResponseEntity<?> getUserWallet(@RequestHeader("Authorization")String jwt) throws Exception {
+        User user=userService.findUserProfileByJwt(jwt);
 
-	@GetMapping("/{userId}/transactions")
-	public ResponseEntity<List<WalletTransaction>> getAllTransactions(@PathVariable Long userId) {
-		User user = userRepository.findById(userId).orElseThrow();
-		Wallet wallet = walletService.getWalletByUser(user);
-		return ResponseEntity.ok(walletTransactionService.getTransactions(wallet));
-	}
+        Wallet wallet = walleteService.getUserWallet(user);
 
-	@PutMapping("/payorder/{userId}/{orderId}")
-	public ResponseEntity<Wallet> payOrder(@PathVariable Long userId, @PathVariable Long orderId) throws Exception {
-		User user = userRepository.findById(userId)
-				.orElseThrow(() -> new UserException("User not found with ID " + userId));
-		Order order = orderRepository.findById(orderId)
-				.orElseThrow(() -> new RuntimeException("Order not found with order ID " + orderId));
-		Wallet updatedWallet = walletService.payOrderPayment(order, user);
-		return ResponseEntity.ok(updatedWallet);
-	}
+        return new ResponseEntity<>(wallet, HttpStatus.OK);
+    }
 
-	@PostMapping("{userId}/topup/create-order")
-	public ResponseEntity<String> createTopUpOrder(@PathVariable Long userId, @RequestParam Long amount)
-			throws Exception {
-		if (amount <= 0) {
-			throw new WalletException("Amount must be greater than 0");
-		}
-		String orderId = paymentService.createRazorpayOrder(userId, amount);
-		return new ResponseEntity<String>(orderId, HttpStatus.CREATED);
-	}
+    @GetMapping("/api/wallet/transactions")
+    public ResponseEntity<List<WalletTransaction>> getWalletTransaction(
+            @RequestHeader("Authorization")String jwt) throws Exception {
+        User user=userService.findUserProfileByJwt(jwt);
 
-	@PostMapping("{userId}/topup/success")
-	public ResponseEntity<Wallet> handlePaymentSuccess(@PathVariable Long userId,
-			@RequestParam String razorpay_order_id, @RequestParam String razorpay_payment_id,
-			@RequestParam String razorpay_signature) throws Exception {
-		Wallet updatedWallet = paymentService.processPaymentSuccess(razorpay_order_id, razorpay_payment_id,
-				razorpay_signature, userId);
-		return ResponseEntity.ok(updatedWallet);
-	}
+        Wallet wallet = walleteService.getUserWallet(user);
 
+        List<WalletTransaction> transactions=walletTransactionService.getTransactions(wallet,null);
+
+        return new ResponseEntity<>(transactions, HttpStatus.OK);
+    }
+
+    @PutMapping("/api/wallet/deposit/amount/{amount}")
+    public ResponseEntity<PaymentResponse> depositMoney(@RequestHeader("Authorization")String jwt,
+                                                        @PathVariable Long amount) throws Exception {
+        User user =userService.findUserProfileByJwt(jwt);
+        Wallet wallet = walleteService.getUserWallet(user);
+//        PaymentResponse res = walleteService.depositFunds(user,amount);
+        PaymentResponse res = new PaymentResponse();
+        res.setPayment_url("deposite success");
+        walleteService.addBalanceToWallet(wallet, amount);
+
+        return new ResponseEntity<>(res,HttpStatus.OK);
+    }
+ 
+    @PutMapping("/api/wallet/deposit")
+    public ResponseEntity<Wallet> addMoneyToWallet(
+            @RequestHeader("Authorization")String jwt,
+            @RequestParam(name="order_id") Long orderId,
+            @RequestParam(name="payment_id")String paymentId
+            ) throws Exception {
+        User user =userService.findUserProfileByJwt(jwt);
+        Wallet wallet = walleteService.getUserWallet(user);
+
+
+        PaymentOrder order = paymentService.getPaymentOrderById(orderId);
+        Boolean status=paymentService.ProccedPaymentOrder(order,paymentId);
+        PaymentResponse res = new PaymentResponse();
+        res.setPayment_url("deposite success");
+
+        if(status){
+            wallet=walleteService.addBalanceToWallet(wallet, order.getAmount());
+        }
+        return new ResponseEntity<>(wallet,HttpStatus.OK);
+    }
+
+    
+//    @PutMapping("/api/wallet/withdraw/amount/{amount}/user/{userId}")
+//    public ResponseEntity<PaymentResponse> withdrawMoney(@PathVariable Long userId, @PathVariable Long amount) throws Exception {
+//
+//        String wallet = walleteService.depositFunds(userId,amount);
+//
+//        return new ResponseEntity<>(wallet,HttpStatus.OK);
+//    }
+
+    @PutMapping("/api/wallet/{walletId}/transfer")
+    public ResponseEntity<Wallet> walletToWalletTransfer(@RequestHeader("Authorization")String jwt,
+                                                        @PathVariable Long walletId,
+                                                         @RequestBody WalletTransaction req
+    ) throws Exception {
+        User senderUser =userService.findUserProfileByJwt(jwt);
+
+        Wallet reciverWallet = walleteService.findWalletById(walletId);
+
+        Wallet wallet = walleteService.walletToWalletTransfer(senderUser,reciverWallet, req.getAmount());
+        WalletTransaction walletTransaction=walletTransactionService.createTransaction(
+                wallet,
+                WalletTransactionType.WALLET_TRANSFER,reciverWallet.getId().toString(),
+                req.getPurpose(),
+                -req.getAmount()
+        );
+        return new ResponseEntity<>(wallet,HttpStatus.OK);
+    }
+
+    @PutMapping("/api/wallet/order/{orderId}/pay")
+    public ResponseEntity<Wallet> payOrderPayment(@PathVariable Long orderId,
+                                                  @RequestHeader("Authorization")String jwt) throws Exception {
+        User user =userService.findUserProfileByJwt(jwt);
+        System.out.println("-------- "+orderId);
+        Order order=orderService.getOrderById(orderId);
+
+        Wallet wallet = walleteService.payOrderPayment(order,user);
+
+        return new ResponseEntity<>(wallet,HttpStatus.OK);
+    }
 }
