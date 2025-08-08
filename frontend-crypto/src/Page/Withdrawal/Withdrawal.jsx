@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Table,
   TableBody,
@@ -9,8 +9,19 @@ import {
   Avatar,
   Paper,
 } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { getWithdrawalHistory } from '../../Redux/Withdrawal/Action';
+import { useNavigate } from 'react-router-dom';
 
 const Withdrawal = () => {
+  const dispatch = useDispatch();
+  const { wallet, withdrawal } = useSelector((store) => store);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getWithdrawalHistory({ jwt: localStorage.getItem("jwt") }));
+  }, []);
+
   return (
         <div>
       <h1 className='font-bold text-gray-500 text-3xl text-left mt-4'>Withdrawal</h1> 
@@ -26,18 +37,18 @@ const Withdrawal = () => {
         </TableHead>
 
         <TableBody>
-          {[1,1,1,1,1,1,1].map((item) => (
+          {withdrawal.history.map((item) => (
             <TableRow
               key={item.id}
               hover
               style={{ cursor: "pointer" }}
               onClick={() => navigate(`/market/${item.id}`)}
             >
-              <TableCell><p>2024/12/12</p>
+              <TableCell><p>{item.date.toString()}</p>
               </TableCell>
               <TableCell>Bank</TableCell>
-              <TableCell>$12874</TableCell>
-              <TableCell align="right">855652</TableCell>
+              <TableCell>${item.amount}</TableCell>
+              <TableCell align="right">{item.status}</TableCell>
             </TableRow>
           ))}
         </TableBody>

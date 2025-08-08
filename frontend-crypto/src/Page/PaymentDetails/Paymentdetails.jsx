@@ -13,12 +13,21 @@ import { maskAccountNumber } from '@/Page/Util/maskAccountNumber';
 import PaymentDetailsForm from './PaymentDetailsForm';
 import { useState } from 'react';
 import { useSelector } from "react-redux";
+import { useEffect } from 'react';
+import {getPaymentDetails} from '@/Redux/Withdrawal/Action';
+import { useDispatch } from 'react-redux';
 
 function PaymentDetails() {
   const [open, setOpen] = useState(false);
   const { withdrawal } = useSelector((store) => store);
   const handleClickOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPaymentDetails({ jwt: localStorage.getItem("jwt") }));
+  }, []);
+
 
   return (
     <div style={{ paddingLeft: '5rem', paddingRight: '5rem' }}>

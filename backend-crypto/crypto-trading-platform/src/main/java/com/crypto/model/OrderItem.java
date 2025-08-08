@@ -1,32 +1,37 @@
 package com.crypto.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Asset {
-
-
-    @Id
+@Entity
+public class OrderItem {
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private double quantity;
-    private double buyPrice;
 
     @ManyToOne
     private Coin coin;
 
-    @ManyToOne
-    private User user;
-	
+    private double buyPrice;
+
+    private double sellPrice;
+
+    @JsonIgnore
+    @OneToOne
+    private Order order;
+
 }

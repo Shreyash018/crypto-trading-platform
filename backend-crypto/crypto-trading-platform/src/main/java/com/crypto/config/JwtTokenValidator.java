@@ -61,8 +61,9 @@ public class JwtTokenValidator extends OncePerRequestFilter {
 				SecurityContextHolder.getContext().setAuthentication(authentication);
 
 			} catch (Exception e) {
-				throw new UserException("Invalid Token...");
-			}
+				    e.printStackTrace(); 
+				    throw new UserException("Invalid Token: " + e.getMessage());
+				}
 		}
 
 		filterChain.doFilter(request, response);

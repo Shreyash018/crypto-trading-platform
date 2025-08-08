@@ -28,6 +28,7 @@ const StockDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { coin, auth } = useSelector((store) => store);
+   const [openTradeDialog, setOpenTradeDialog] = useState(false);
 
 
   useEffect(() => {
@@ -72,19 +73,20 @@ const StockDetails = () => {
         <Box display="flex" alignItems="center" gap={2}>
           
           <Button variant="contained" sx={{
-    backgroundColor: grey[800], // darker gray
-    color: '#fff',
-    '&:hover': {
-      backgroundColor: grey[900], // even darker on hover
-    },
-  }} >
+               backgroundColor: grey[800], // darker gray
+                 color: '#fff',
+                '&:hover': {
+                 backgroundColor: grey[900], // even darker on hover
+                 },
+          }}
+            onClick={() => setOpenTradeDialog(true)}>
             TRADE
           </Button>
         </Box>
       </Box>
 
       {/* Dialog */}
-      <Dialog  maxWidth="sm" fullWidth>
+      <Dialog open={openTradeDialog} maxWidth="sm" fullWidth>
         <DialogTitle textAlign="center" sx={{ pt: 3 }}>
           How much do you want to spend?
         </DialogTitle>
@@ -92,7 +94,7 @@ const StockDetails = () => {
           <TradingForm />
         </DialogContent>
         <DialogActions>
-          <Button color="secondary">
+          <Button color="secondary" onClick={() => setOpenTradeDialog(false)}>
             Cancel
           </Button>
         </DialogActions>

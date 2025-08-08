@@ -24,7 +24,13 @@ import TopupForm from "./TopupForm";
 import TransferForm from "./TransferForm";
 import WithdrawForm from "./WithdrawForm";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserWallet, getWalletTransactions } from "../../Redux/Wallet/Action";
+import { depositMoney, getUserWallet, getWalletTransactions } from "../../Redux/Wallet/Action";
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 const Wallet = () => {
   const dispatch = useDispatch();
@@ -32,17 +38,40 @@ const Wallet = () => {
   const [openTopup, setOpenTopup] = useState(false);
   const [openWithdraw, setOpenWithdraw] = useState(false);
   const [openTransfer, setOpenTransfer] = useState(false);
+  const query = useQuery();
+  const orderId = query.get("order_id");
+  const paymentId = query.get("payment_id");
+  const razorpaypaymentId = query.get("razorpay_payment_id");
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    handleFetchUserWallet();
-  },[])
+useEffect(() => {
+  handleFetchUserWallet();
+  handleFetchWalletTransactions();
+}, []);
 
-  const hanldeFetchWalletTransactions = () => {
-    dispatch(getWalletTransactions({ jwt: localStorage.getItem("jwt") }));
-  };
+useEffect(() => {
+  if(orderId){
+    dispatch(depositMoney({ jwt: localStorage.getItem("jwt"), orderId, paymentId : razorpaypaymentId || paymentId , navigate }) );
+  }
+}, [orderId, paymentId, razorpaypaymentId]);
 
-  const handleFetchUserWallet = () => {
-    dispatch(getUserWallet({ jwt: localStorage.getItem("jwt") }))}
+const handleFetchUserWallet = () => {
+  const token = localStorage.getItem("jwt");
+  if (token) {
+    dispatch(getUserWallet(token));
+  } else {
+    console.error("JWT not found in localStorage");
+  }
+};
+
+const handleFetchWalletTransactions = () => {
+  const token = localStorage.getItem("jwt");
+  if (token) {
+   dispatch(getWalletTransactions({ jwt: token }));
+  } else {
+    console.error("JWT not found in localStorage");
+  }
+};
 
   return (
     <div className='flex flex-col items-center'>
@@ -56,7 +85,7 @@ const Wallet = () => {
                   <Typography variant="h5">My Wallet</Typography>
                   <Box display="flex" alignItems="center" gap={1}>
                     <Typography variant="caption" color="text.secondary">
-                      #FAVHJY
+                      #{wallet.userWallet?.id || "N/A"}
                     </Typography>
                     <IconButton
                       size="small"
@@ -80,7 +109,7 @@ const Wallet = () => {
             <Box display="flex" alignItems="center" gap={1}>
               <AttachMoneyIcon />
               <Typography variant="h6" fontWeight="bold">
-                {wallet.userWallet?.balance ? wallet.userWallet.balance.toFixed(2) : "0.00"} USD
+                {wallet.userWallet?.balance} USD
               </Typography>
             </Box>
 
@@ -186,24 +215,25 @@ const Wallet = () => {
        <div className="py-5 pt-10">
       <div className="flex gap-2 items-center pb-5">
         <h1 className="text-2xl font-semibold">History</h1>
-        <IconButton onClick={hanldeFetchWalletTransactions} size="small">
+        <IconButton onClick={handleFetchWalletTransactions} size="small">
           <AutorenewIcon className="hover:text-gray-400" />
         </IconButton>
       </div>
 
       <div className="space-y-5">
-        {[1,1,1,1,1,1,1,1].map((item, index) => (
+        
+        {wallet.transactions.map((item, index) => (
           <Card
             key={index}
             variant="outlined"
             className="px-5 py-2 flex justify-between items-center lg:w-[50]"
           >
             <div className="flex items-center gap-5">
-              <Avatar>
+              <Avatar onClick={handleFetchWalletTransactions}>
                 <ShuffleIcon />
               </Avatar>
               <div className="space-y-1">
-                <Typography variant="body1">Buy Coin</Typography>
+                <Typography variant="body1">{item.type || item.purpose}</Typography>
                 <Typography variant="body2" className="text-gray-500">
                   {item.date || "2023-10-01 12:00 PM"}
                 </Typography>
@@ -217,7 +247,7 @@ const Wallet = () => {
                   item.amount > 0 ? 'text-green-500' : 'text-red-500'
                 }`}
               >
-                785266 USD
+                {item.amount}
               </Typography>
             </div>
           </Card>

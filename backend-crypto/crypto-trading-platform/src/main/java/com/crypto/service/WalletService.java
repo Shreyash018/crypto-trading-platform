@@ -1,19 +1,18 @@
 package com.crypto.service;
 
-import java.math.BigDecimal;
-
 import com.crypto.exception.WalletException;
 import com.crypto.model.Order;
 import com.crypto.model.User;
 import com.crypto.model.Wallet;
 
 public interface WalletService {
-	Wallet createWallet(User user);
+	 Wallet getUserWallet(User user) throws WalletException;
 
-	Wallet getWalletByUser(User user);
+	    public Wallet addBalanceToWallet(Wallet wallet, Long money) throws WalletException;
 
-	void updateBalance(Wallet wallet, BigDecimal amount);
+	    public Wallet findWalletById(Long id) throws WalletException;
 
-	Wallet payOrderPayment(Order order, User user) throws WalletException;
+	    public Wallet walletToWalletTransfer(User sender,Wallet receiverWallet, Long amount) throws WalletException;
 
+	    public Wallet payOrderPayment(Order order, User user) throws WalletException;
 }

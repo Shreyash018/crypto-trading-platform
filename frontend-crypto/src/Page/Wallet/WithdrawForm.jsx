@@ -9,6 +9,7 @@ import DialogActions from "@mui/material/DialogActions";
 
 import { maskAccountNumber } from '@/Page/Util/maskAccountNumber';
 import "./WithdrawForm.css";
+import { withdrawalRequest } from "../../Redux/Withdrawal/Action";
 
 const WithdrawForm = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const WithdrawForm = () => {
         <p style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
           Add payment method
         </p>
-        <Button variant="contained" onClick={() => navigate("/payment-details")}>
+        <Button variant="contained" onClick={() => navigate("/paymentdetails")}>
           Add Payment Details
         </Button>
       </div>

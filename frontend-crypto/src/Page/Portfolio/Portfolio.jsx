@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Table,
   TableBody,
@@ -28,24 +28,24 @@ const Portfolio = () => {
         </TableHead>
 
         <TableBody>
-          {[1,1,1,1,1,1,1].map((item) => (
+          {[1,1,1,1,1,1].map((item) => (
             <TableRow
               key={item.id}
               hover
               style={{ cursor: "pointer" }}
               onClick={() => navigate(`/market/${item.id}`)}
             >
-              <TableCell>
+              {/* <TableCell>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <Avatar src={item.image} alt={item.symbol} />
-                  <span>{item.name}</span>
+                  <Avatar src={item.coin.image} alt={item.coin.symbol} />
+                  <span>{item.coin.name}</span>
                 </div>
               </TableCell>
-              <TableCell>Symbol</TableCell>
-              <TableCell>volume</TableCell>
-              <TableCell>marketcap</TableCell>
-              <TableCell ></TableCell>
-              <TableCell align="right">855652</TableCell>
+              <TableCell>{item.coin.symbol.toUpperCase()}</TableCell>
+              <TableCell>{item.quantity}</TableCell>
+              <TableCell>{item.coin.price_change_24h}</TableCell>
+              <TableCell>{item.coin.price_change_percentage_24h}</TableCell>
+              <TableCell align="right">{item.coin.total_volume}</TableCell> */}
             </TableRow>
           ))}
         </TableBody>

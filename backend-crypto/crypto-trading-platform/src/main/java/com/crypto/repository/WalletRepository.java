@@ -8,4 +8,6 @@ import com.crypto.model.Wallet;
 public interface WalletRepository extends JpaRepository<Wallet, Long> {
 	Wallet findByUser(User user);
 
+	Wallet findByUserId(Long id);
+
 }

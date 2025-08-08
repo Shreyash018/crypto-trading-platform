@@ -17,7 +17,7 @@ export const payOrder = ({jwt, orderData,amount}) => async (dispatch) => {
       payload: response.data,
       amount
     });
-    console.log("order success",response.data)
+   
   } catch (error) {
     console.log("error",error)
     dispatch({
@@ -68,7 +68,7 @@ export const getAllOrdersForUser = ({jwt, orderType, assetSymbol}) => async (dis
       payload: response.data,
       
     });
-    console.log("order success", response.data)
+    
   } catch (error) {
     console.log("error ",error)
     dispatch({

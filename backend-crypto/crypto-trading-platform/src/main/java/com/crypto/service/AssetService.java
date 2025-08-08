@@ -9,16 +9,19 @@ import com.crypto.model.User;
 public interface AssetService {
 
 	
-	Asset createAssetForUser(User user);
-	
-	    void addCoin(Long userId, Coin coin, int quantity);
-	    
-	    void updateCoin(Long userId, Coin coin, int quantity);
-	    
-	    void deleteCoin(Long userId, String coinSymbol);
-	    
-	    List<Coin> getAllCoinsForUser(Long userId);
+	 Asset createAsset(User user, Coin coin, double quantity);
 
-		Asset findAssetByUserId(Long userId) throws Exception;
+	    Asset getAssetById(Long assetId);
+
+	    Asset getAssetByUserAndId(Long userId,Long assetId);
+
+	    List<Asset> getUsersAssets(Long userId);
+
+	    Asset updateAsset(Long assetId,double quantity) throws Exception;
+
+	    Asset findAssetByUserIdAndCoinId(Long userId,String coinId) throws Exception;
+
+	    void deleteAsset(Long assetId);
+
 	
 }

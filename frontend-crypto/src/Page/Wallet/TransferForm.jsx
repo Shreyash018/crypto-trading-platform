@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
+import { useSelector } from "react-redux";
+import { transferMoney } from "../../Redux/Wallet/Action";
+
 
 // Material UI imports
 import Button from "@mui/material/Button";
@@ -9,6 +12,7 @@ import DialogActions from "@mui/material/DialogActions";
 
 const TransferForm = () => {
   const dispatch = useDispatch();
+  const {wallet} = useSelector((store) => store);
   const [formData, setFormData] = useState({
     amount: "",
     walletId: "",
