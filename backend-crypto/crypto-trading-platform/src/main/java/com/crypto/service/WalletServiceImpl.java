@@ -25,6 +25,10 @@ public class WalletServiceImpl implements WalletService {
 
 	@Override
 	public Wallet createWallet(User user) {
+		Wallet existingWallet = walletRepository.findByUser(user);
+		if (existingWallet != null) {
+			return existingWallet;
+		}
 		Wallet wallet = new Wallet();
 		wallet.setUser(user);
 		wallet.setBalance(BigDecimal.ZERO);

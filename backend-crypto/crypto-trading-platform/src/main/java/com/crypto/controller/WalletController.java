@@ -1,7 +1,6 @@
 package com.crypto.controller;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crypto.domain.WalletTransactionType;
 import com.crypto.exception.UserException;
 import com.crypto.exception.WalletException;
 import com.crypto.model.Order;
